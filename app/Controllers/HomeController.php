@@ -13,7 +13,8 @@ class HomeController extends Controller {
      * @return void
      */
     public function indexAction(): void {
-        $this->view->render('home.index');
+        $this->view->props = ['user' => ['name' => 'Chad']];
+        $this->view->renderJSX('home.index');
     }
 
     /**
