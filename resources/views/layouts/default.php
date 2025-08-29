@@ -1,20 +1,8 @@
 <?php use Core\Session; ?>
+<?php use App\Support\Vite; ?>
+<?php $isDev = Vite::isDev(); ?>
 <!DOCTYPE html>
 <html lang="en">
-  <?php
-    // Treat as dev if Vite's dev server is reachable,
-    // OR if your env explicitly says dev-ish.
-    function viteIsRunning(string $devBase = 'http://localhost:5173'): bool {
-        $url = rtrim($devBase, '/') . '/@vite/client';
-        $ctx = stream_context_create(['http' => ['method' => 'HEAD', 'timeout' => 0.25]]);
-        $fh = @fopen($url, 'r', false, $ctx);
-        if ($fh) { fclose($fh); return true; }
-        return false;
-    }
-
-    $env   = env('APP_ENV', 'production');
-    $isDev = viteIsRunning() || in_array($env, ['local','dev','development'], true);
-  ?>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

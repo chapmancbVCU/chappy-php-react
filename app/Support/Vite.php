@@ -5,20 +5,17 @@ namespace App\Support;
 
 final class Vite
 {
-    /**
-     * Render script/link tags for a Vite entry.
-     * - In dev, inject HMR client + raw module URL from the dev server.
-     * - In prod, read the manifest to emit hashed assets + CSS.
-     *
-     * @param string $entry Relative path from project root (e.g. 'resources/js/app.jsx')
-     * @param string $devServer 'http://localhost:5173'
-     */
-    public static function tags(string $entry, string $devServer = 'http://localhost:5173'): string
+    
+    private static function devServerRunning(string $devServer): bool
     {
-        $isDev = self::devServerRunning($devServer);
-        return $isDev
-            ? self::devTags($entry, $devServer)
-            : self::prodTags($entry);
+        // Cheap check: try opening the HMR endpoint
+        $url = rtrim($devServer, '/') . '/@vite/client';
+        $ctx = stream_context_create(['http' => ['timeout' => 0.15]]);
+        try {
+            $f = @fopen($url, 'r', false, $ctx);
+            if ($f) { fclose($f); return true; }
+        } catch (\Throwable) {}
+        return false;
     }
 
     private static function devTags(string $entry, string $devServer): string
@@ -31,6 +28,10 @@ final class Vite
 HTML;
     }
 
+    public static function isDev() {
+        $env = env('APP_ENV', 'production');
+        return Vite::viteIsRunning() || in_array($env, ['local','dev','development'], true);
+    }
     private static function prodTags(string $entry): string
     {
         $manifestPath = __DIR__ . '/../../public/build/manifest.json';
@@ -68,15 +69,29 @@ HTML;
         return implode("\n", $tags);
     }
 
-    private static function devServerRunning(string $devServer): bool
+    /**
+     * Render script/link tags for a Vite entry.
+     * - In dev, inject HMR client + raw module URL from the dev server.
+     * - In prod, read the manifest to emit hashed assets + CSS.
+     *
+     * @param string $entry Relative path from project root (e.g. 'resources/js/app.jsx')
+     * @param string $devServer 'http://localhost:5173'
+     */
+    public static function tags(string $entry, string $devServer = 'http://localhost:5173'): string
     {
-        // Cheap check: try opening the HMR endpoint
-        $url = rtrim($devServer, '/') . '/@vite/client';
-        $ctx = stream_context_create(['http' => ['timeout' => 0.15]]);
-        try {
-            $f = @fopen($url, 'r', false, $ctx);
-            if ($f) { fclose($f); return true; }
-        } catch (\Throwable) {}
+        $isDev = self::devServerRunning($devServer);
+        return $isDev
+            ? self::devTags($entry, $devServer)
+            : self::prodTags($entry);
+    }
+
+    // Treat as dev if Vite's dev server is reachable,
+    // OR if your env explicitly says dev-ish.
+    public static function viteIsRunning(string $devBase = 'http://localhost:5173'): bool {
+        $url = rtrim($devBase, '/') . '/@vite/client';
+        $ctx = stream_context_create(['http' => ['method' => 'HEAD', 'timeout' => 0.25]]);
+        $fh = @fopen($url, 'r', false, $ctx);
+        if ($fh) { fclose($fh); return true; }
         return false;
     }
 }
