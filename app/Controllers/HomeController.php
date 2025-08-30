@@ -29,6 +29,10 @@ class HomeController extends Controller {
             'user' => $user ?? 'Guest',
             'myInput' => $myInput
         ];
+
+        // Set $props to view->props works as well.
+        //$this->view->props = $props;
+        //$this->view->renderJSX('home.Index');
         $this->view->renderJSX('home.Index', $props);
     }
 }
