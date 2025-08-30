@@ -1,5 +1,5 @@
 import React from "react";
-import { HiddenCsrfInput } from "../../utils/csrf.jsx";
+import { HiddenCsrfInput } from "@/utils/csrf";
 
 export default function Index({ user, action ,myInput}) {
   return (

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import '../css/app.css'; // Let Vite handle CSS in dev & prod
+import '@css/app.css';
 
 // Code-split all pages under ./pages
 const pages = import.meta.glob('./pages/**/*.jsx');

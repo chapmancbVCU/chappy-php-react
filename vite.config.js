@@ -28,6 +28,7 @@ export default defineConfig({
         alias: {
             tinymce: path.resolve(__dirname, 'node_modules/tinymce'),
             '@': path.resolve(__dirname, 'resources/js'), // ✅ shortcut for imports
+            '@css': path.resolve(__dirname, 'resources/css'),
         }
     },
     plugins: [
