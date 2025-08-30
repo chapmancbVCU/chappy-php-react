@@ -1,15 +1,12 @@
 import React from "react";
+import { HiddenCsrfInput } from "../../utils/csrf.jsx";
 
-function getCsrf() {
-   return document.getElementById('app')?.getAttribute('data-csrf') || '';
-}
 export default function Index({ user, action ,myInput}) {
-  const csrf = getCsrf();
   return (
     <main>
       <form method="post" action={action}>
         {/* Pick the right name for your framework; keep both temporarily if unsure */}
-        <input type="hidden" name="csrf_token" value={csrf} />
+        <HiddenCsrfInput />
         {/* <input type="hidden" name="_token" value={csrf} /> */}
 
         <div className="mb-3">
