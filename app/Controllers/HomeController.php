@@ -13,9 +13,19 @@ class HomeController extends Controller {
      * @return void
      */
     public function indexAction(): void {
+        $myInput = '';
+
+        if($this->request->isPost()) {
+            $this->request->csrfCheck();
+            $myInput = $this->request->get('myInput');
+            flashMessage('info', "You entered: {$myInput}");
+        }
+
+        
         $props = [
-            'test' => 'test',
-            'user' => ['name' => 'Chad']
+            'action' => route('home.index'),
+            'user' => ['name' => 'Chad'],
+            'myInput' => $myInput
         ];
         $this->view->renderJSX('home.Index', $props);
     }

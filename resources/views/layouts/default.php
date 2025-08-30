@@ -1,7 +1,8 @@
 <?php use Core\Session; ?>
-<?php use App\Support\Vite; ?>
+<?php use Core\Lib\React\Vite; ?>
 <?php $isDev = Vite::isDev(); ?>
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
