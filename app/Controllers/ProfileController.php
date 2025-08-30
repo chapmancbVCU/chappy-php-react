@@ -59,10 +59,12 @@ class ProfileController extends Controller {
         $user = AuthService::currentUser();
         UserService::ensureAuthenticatedUser($user);
         $profileImages = ProfileImages::findByUserId($user->id);
-        
-        $this->view->profileImages = $profileImages;
-        $this->view->user = $user;
-        $this->view->render('profile.index');
+        $this->view->setSiteTitle("Profile Details for {$user->username}");
+        $this->view->props = [
+            'user' => $user, 
+            'profileImage' => asset($profileImages[0]->url)
+        ];
+        $this->view->renderJSX('profile.Index');
     }
 
     /**
