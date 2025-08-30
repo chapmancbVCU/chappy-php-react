@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 use Core\Controller;
+use Core\Services\AuthService;
+
 /**
  * Implements support for our Home controller.  Functions found in this class 
  * will support tasks related to the home page.
@@ -13,6 +15,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function indexAction(): void {
+        $user = AuthService::currentUser();
         $myInput = '';
 
         if($this->request->isPost()) {
@@ -24,7 +27,7 @@ class HomeController extends Controller {
         
         $props = [
             'action' => route('home.index'),
-            'user' => ['name' => 'Chad'],
+            'user' => ['name' => $user->username ?? 'Guest'],
             'myInput' => $myInput
         ];
         $this->view->renderJSX('home.Index', $props);
