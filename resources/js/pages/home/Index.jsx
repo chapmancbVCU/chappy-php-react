@@ -1,7 +1,7 @@
 import React from "react";
 import { HiddenCsrfInput } from "@/utils/csrf";
 
-export default function Index({ user, action ,myInput}) {
+export default function Index({ user, action ,myInput }) {
   return (
     <main>
       <form method="post" action={action}>
@@ -15,7 +15,7 @@ export default function Index({ user, action ,myInput}) {
         <button className="btn btn-primary" type="submit">Save</button>
       </form>
 
-      <h1>Hello, {user?.name ?? 'Guest'} 👋{myInput}</h1>
+      <h1>Hello, {user.username} 👋{myInput}</h1>
       <p>This view is powered by React + Vite.</p>
     </main>
   );

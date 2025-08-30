@@ -24,10 +24,9 @@ class HomeController extends Controller {
             flashMessage('info', "You entered: {$myInput}");
         }
 
-        
         $props = [
             'action' => route('home.index'),
-            'user' => ['name' => $user->username ?? 'Guest'],
+            'user' => $user ?? 'Guest',
             'myInput' => $myInput
         ];
         $this->view->renderJSX('home.Index', $props);
