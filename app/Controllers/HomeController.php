@@ -32,14 +32,4 @@ class HomeController extends Controller {
         ];
         $this->view->renderJSX('home.Index', $props);
     }
-
-    /**
-     * Demonstration for an Ajax request.
-     *
-     * @return void
-     */
-    public function testAjaxAction(): void {
-        $resp = ['success'=>true,'data'=>['id'=>23,'name'=>'Hello World','favorite_food'=>'bread']];
-        $this->jsonResponse($resp);
-    }
 }
