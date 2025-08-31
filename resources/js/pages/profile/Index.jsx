@@ -2,7 +2,7 @@ import React from "react";
 import SafeHtml from '@/utils/SafeHtml.jsx';
 import route from "@/utils/route";
 function Index({ user, profileImage }) {
-    route('profile.edit', [user.id]);
+    
     return (
         <>
             <h1 className="text-center">Profile Details for {user.username}</h1>
@@ -47,6 +47,14 @@ function Index({ user, profileImage }) {
                         )}
                     </tbody>
                 </table>
+                <div class="mb-5 d-flex justify-content-around">
+                    <a href={route('profile.edit')} class="btn btn-info btn-sm mx-2 mb-3">
+                        <i class="fa fa-edit"></i> Edit User Profile
+                    </a>
+                    <a href={route('profile.updatePassword')} class="btn btn-danger btn-sm mx-2 mb-3">
+                        <i class="fa fa-key"></i> Update Password
+                    </a>
+                </div>
             </div>
         </>
     );

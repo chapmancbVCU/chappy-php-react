@@ -1,10 +1,26 @@
+/**
+ * Route function for views that supports dot notation and array of parameters.
+ * @param {string} path The controller name concatenated with the action 
+ * name using dot notation.
+ * @param {array} params The parameters for the action.
+ * @returns {string} The URL
+ */
 export default function route(path, params = []) {
-    console.log(`Params: ${params}`);
-
     const parts = path.split('.');
     const controller = parts[0];
-    console.log(`Controller: ${controller}`);
+    const action = (parts.length === 2) ? parts[1] : 'index';
 
-    const action = (parts.length == 2) ? parts[1] : 'index';
-    console.log(`Action: ${action}`);
+    let domain = import.meta.env.VITE_APP_DOMAIN;
+
+    if(domain.endsWith('/')) {
+        domain = domain.slice(0, -1);
+    }
+
+    let url = domain + '/' + controller.replace(/\//g, "") + "/" + action.replace(/\//g, "");
+
+    if(url.length !== 0) {
+        url += '/' + params.map(encodeURIComponent).join('/');
+    } 
+
+    return url;
 }
