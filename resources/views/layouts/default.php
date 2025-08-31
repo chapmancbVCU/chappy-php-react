@@ -45,7 +45,5 @@
       <?= Session::displayMessage() ?>
       <?= $this->content('body'); ?>
     </div>
-    <?php //$this->component(footer.php'); ?>
-    
   </body>
 </html>
