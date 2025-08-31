@@ -15,8 +15,9 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"First Name"} 
                         name={"fname"}
                         value={user.fname}
-                        inputAttrs={{'class': 'form-control input-sm'}}
-                        divAttrs={{'class': 'form-group mb-3'}}
+                        inputAttrs={{'className': 'form-control input-sm', 'placeholder': 'placeholder'}}
+                        divAttrs={{'className': 'form-group mb-3'}}
+                        errors={{'field': 'fname', "message": 'First name is required'}}
                     />
                 </form>
             </div>
