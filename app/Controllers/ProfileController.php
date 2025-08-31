@@ -44,10 +44,13 @@ class ProfileController extends Controller {
             }
         }
 
-        $this->view->profileImages = $profileImages;
-        $this->view->displayErrors = $user->getErrorMessages();
-        $this->view->user = $user;
-        $this->view->render('profile.edit');
+        $props = [
+            'user' => $user,
+            'displayErrors' => $user->getErrorMessages(),
+            'profileImages' => $profileImages,
+        ];
+        $this->view->setSiteTitle("Edit Details for {$user->username}");
+        $this->view->renderJsx('profile.Edit', $props);
     }
 
     /**
