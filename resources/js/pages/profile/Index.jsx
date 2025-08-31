@@ -1,7 +1,8 @@
 import React from "react";
 import SafeHtml from '@/utils/SafeHtml.jsx';
+import route from "@/utils/route";
 function Index({ user, profileImage }) {
-    // console.log(user.description);
+    route();
     return (
         <>
             <h1 className="text-center">Profile Details for {user.username}</h1>
