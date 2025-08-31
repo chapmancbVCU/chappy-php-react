@@ -11,10 +11,14 @@ export function formatId(name) {
   return name.replace(/\[]/, "");
 }
 
-
+/**
+ * Normalized attributes to be suitable for use in HTML elements.
+ * @param {object} attrs The attributes to normalize.
+ * @returns {any} The normalized attributes.
+ */
 export function normalizeAttrs(attrs = {}) {
-  const { class: klass, for: htmlFor, ...rest } = attrs;
-  if (klass) rest.className = klass;
+  const { attribute: attr, for: htmlFor, ...rest } = attrs;
+  if (attr) rest.className = attr;
   if (htmlFor) rest.htmlFor = htmlFor;
   return rest;
 }
