@@ -2,7 +2,7 @@ import React from "react";
 import SafeHtml from '@/utils/SafeHtml.jsx';
 import route from "@/utils/route";
 function Index({ user, profileImage }) {
-    route();
+    route('profile.edit', [user.id]);
     return (
         <>
             <h1 className="text-center">Profile Details for {user.username}</h1>
