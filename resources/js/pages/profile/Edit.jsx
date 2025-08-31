@@ -1,6 +1,6 @@
 import React from "react";
 import '@css/profileImage.css';
-import { CSRF } from "@/utils/FormHelpers";
+
 
 function Edit({user, displayMessages, profileImages}) {
     return (
@@ -10,6 +10,8 @@ function Edit({user, displayMessages, profileImages}) {
                 <hr />
                 <form className="form" action="" method="post" encType="multipart/form-data">
                     <CSRF />
+                    {/* {input('text', 'First Name', 'fname', user.fname, {'class': 'form-control input-sm'}, {'class': 'form-group mb-3'})} */}
+
                 </form>
             </div>
         </div>
