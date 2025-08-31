@@ -1,5 +1,5 @@
 import React from "react";
-import { CSRF } from "@/utils/FormHelpers";
+import { CSRF } from "@/components/Forms";
 
 export default function Index({ user, action ,myInput }) {
   return (
