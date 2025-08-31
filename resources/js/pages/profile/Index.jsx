@@ -47,12 +47,12 @@ function Index({ user, profileImage }) {
                         )}
                     </tbody>
                 </table>
-                <div class="mb-5 d-flex justify-content-around">
-                    <a href={route('profile.edit')} class="btn btn-info btn-sm mx-2 mb-3">
-                        <i class="fa fa-edit"></i> Edit User Profile
+                <div className="mb-5 d-flex justify-content-around">
+                    <a href={route('profile.edit')} className="btn btn-info btn-sm mx-2 mb-3">
+                        <i className="fa fa-edit"></i> Edit User Profile
                     </a>
-                    <a href={route('profile.updatePassword')} class="btn btn-danger btn-sm mx-2 mb-3">
-                        <i class="fa fa-key"></i> Update Password
+                    <a href={route('profile.updatePassword')} className="btn btn-danger btn-sm mx-2 mb-3">
+                        <i className="fa fa-key"></i> Update Password
                     </a>
                 </div>
             </div>
