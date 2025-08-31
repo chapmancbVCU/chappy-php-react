@@ -1,28 +1,19 @@
 import React from "react";
-
+import SafeHtml from '@/utils/SafeHtml.jsx';
 function Index({ user, profileImage }) {
     // console.log(user.description);
-
-    const desc = () => {
-        const item = document.querySelector("#description");
-        const data = item
-        // console.log(data)
-    }
-
-    desc();
     return (
         <>
             <h1 className="text-center">Profile Details for {user.username}</h1>
             <div className="col align-items-center justify-content-center mx-auto my-3 w-50">
                 {profileImage && (
-                    <img
-                    src={profileImage}
-                    className="img-thumbnail mx-auto my-5 d-block w-50 rounded border border-primary shadow-lg"
-                    loading="lazy"
+                    <img src={profileImage}
+                        className="img-thumbnail mx-auto my-5 d-block w-50 rounded border border-primary shadow-lg"
+                        loading="lazy"
                     />
                 )}
 
-                <table class="table table-striped  table-bordered table-hover bg-light my-5">
+                <table className="table table-striped  table-bordered table-hover bg-light my-5">
                     <tbody>
                         <tr>
                             <th className="text-center">First Name</th>
@@ -41,15 +32,16 @@ function Index({ user, profileImage }) {
                             <td className="text-center">{user.acl}</td>
                         </tr>
                         <tr>
-                            {user.description ? (
-                                <th className="text-center" colSpan={2}>Description</th>
-                            ) :
-                                <th className="text-center" colSpan={2}>No Description</th>
-                            }
+                            <th className="text-center" colSpan={2}>
+                                {user.description ? 'Description' : 'No description'}
+                            </th>
+                            
                         </tr>
                         {user.description && (
                             <tr>
-                                <td id="description" className="p-4" colSpan={2}>{user.description}</td>
+                                <td id="description" className="p-4" colSpan={2}>
+                                    <SafeHtml html={user.description} className="prose"/>
+                                </td>
                             </tr>
                         )}
                     </tbody>
