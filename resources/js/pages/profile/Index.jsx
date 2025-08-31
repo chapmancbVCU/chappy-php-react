@@ -1,6 +1,12 @@
 import React from "react";
 import SafeHtml from '@/utils/SafeHtml.jsx';
 import route from "@/utils/route";
+
+/**
+ * Renders index view for profile controller.
+ * @param {string} param0 Props for user and current profile image URL.
+ * @returns 
+ */
 function Index({ user, profileImage }) {
     
     return (
