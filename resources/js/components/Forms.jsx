@@ -75,13 +75,33 @@ export const Input = ({
     )
 }
 
+/**
+ * Rich text editor field (TinyMCE) that posts HTML via a hidden input.
+ *
+ * Behavior:
+ * - Decodes any HTML entities in `value` before seeding the editor (so `<p>` renders as a paragraph).
+ * - Uses TinyMCE as an uncontrolled editor; current HTML is mirrored into a hidden `<input name={name}>`
+ *   so your PHP controller receives `$_POST[name]` as HTML.
+ * - UI skin CSS is expected to be imported elsewhere; `skin:false` prevents URL fetches.
+ *
+ * @typedef {Object} RichTextProps
+ * @property {string}  [label]                 Visible label text.
+ * @property {string}  name                    Field name; also used to derive the editor `id`.
+ * @property {string}  [value='']              Initial HTML (may be entity-encoded).
+ * @property {Object}  [inputAttrs={}]         Optional attributes (e.g., `{ placeholder: '...' }`).
+ * @property {Object}  [divAttrs={}]           Wrapper `<div>` attributes (e.g., `{ className: 'mb-3' }`).
+ * @property {Record<string,string[]>|string[]} [errors=[]] Error bag used by `errorMsg(errors, name)`.
+ *
+ * @param {RichTextProps} props
+ * @returns {JSX.Element}
+ */
 export const RichText = ({
     label,
     name,
     value = '',
-    inputAttrs = {},     
-    divAttrs = {},
-    errors = [],
+    inputAttrs={},     
+    divAttrs={},
+    errors={},
 }) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
@@ -126,20 +146,52 @@ export const RichText = ({
     );
 };
 
-export const SubmitTag = ({label, inputAttrs = []}) => {
+/**
+ * Submit input helper.
+ *
+ * @typedef {Object} SubmitTagProps
+ * @property {string} label             Button label/value.
+ * @property {Object} [inputAttrs={}]   Extra attributes for `<input type="submit">`
+ *                                      (e.g., `{ className: 'btn btn-primary', disabled: true }`).
+ *
+ * @param {SubmitTagProps} props
+ * @returns {JSX.Element}
+ */
+export const SubmitTag = ({label, inputAttrs={}}) => {
     const inputString = normalizeAttrs(inputAttrs);
     return(
         <input type="submit" value={label} {...inputString}/>
     )
 }
 
+/**
+ * Labeled, uncontrolled `<textarea>` with validation styling and messages.
+ *
+ * Behavior:
+ * - Derives a stable `id` from `name` via `formatId()`.
+ * - Normalizes wrapper/input attributes via `normalizeAttrs()` (e.g., `class` → `className`).
+ * - Appends an error class (e.g., `is-invalid`) via `appendErrorClass()`.
+ * - Renders field-specific error text from `errorMsg(errors, name)`.
+ *
+ * @typedef {Object} TextAreaProps
+ * @property {string}  label                 Visible label text.
+ * @property {string}  name                  Field name; also used to derive the `id`.
+ * @property {string}  [value='']            Initial text (applied as `defaultValue`).
+ * @property {Object}  [inputAttrs={}]       Extra attributes for `<textarea>`
+ *                                           (e.g., `{ rows: 5, className: 'form-control' }`).
+ * @property {Object}  [divAttrs={}]         Wrapper `<div>` attributes (e.g., `{ className: 'mb-3' }`).
+ * @property {Record<string,string[]>|string[]} [errors=[]] Error bag.
+ *
+ * @param {TextAreaProps} props
+ * @returns {JSX.Element}
+ */
 export const TextArea = ({
     label,
     name,
     value='',
     inputAttrs={},
     divAttrs={},
-    errors = []
+    errors={}
 }) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
@@ -155,5 +207,6 @@ export const TextArea = ({
         </div>
     )
 }
+
 const Forms = { CSRF, Input, RichText, SubmitTag, TextArea };
 export default Forms;
