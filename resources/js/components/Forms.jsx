@@ -19,24 +19,11 @@ export const Input = ({
     divAttrs={},
     errors = []}
 ) => {
-    // console.log(`Type: ${type}`)
-    // console.log(`Label: ${label}`)
-    // console.log(`Name: ${name}`)
-    // console.log(`Value: ${value}`)
-    // console.log(`Errors: ${errors.field}`)
-    
     const id = formatId(name);
-    // console.log(`ID: ${id}`)
-    
-    // console.log(`divAttrs: ${divAttrs.className}`)
     const divString = normalizeAttrs(divAttrs);
-    // console.log(`divString: ${divString}`)
-
     let errorMessages = errorMsg(errors, name);
-    // console.log(`inputAttrs: ${divAttrs.class}`)
-    // inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
+    inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
     const inputString = normalizeAttrs(inputAttrs);
-    // console.log(`inputString: ${inputString}`)b
 
     return (
         <div {...divString}>
