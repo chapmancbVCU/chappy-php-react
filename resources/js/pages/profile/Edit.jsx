@@ -15,7 +15,7 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"First Name"} 
                         name={"fname"}
                         value={user.fname}
-                        inputAttrs={{'className': 'form-control input-sm is-invalid', 'placeholder': 'placeholder'}}
+                        inputAttrs={{'className': 'form-control input-sm'}}
                         divAttrs={{'className': 'form-group mb-3'}}
                         errors={displayMessages}
                     />
@@ -24,7 +24,7 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"Last Name"} 
                         name={"lname"}
                         value={user.lname}
-                        inputAttrs={{'className': 'form-control input-sm', 'placeholder': 'placeholder'}}
+                        inputAttrs={{'className': 'form-control input-sm'}}
                         divAttrs={{'className': 'form-group mb-3'}}
                         errors={displayMessages}
                     />
@@ -33,7 +33,7 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"Email"} 
                         name={"email"}
                         value={user.email}
-                        inputAttrs={{'className': 'form-control input-sm', 'placeholder': 'placeholder'}}
+                        inputAttrs={{'className': 'form-control input-sm'}}
                         divAttrs={{'className': 'form-group mb-3'}}
                         errors={displayMessages}
                     />
