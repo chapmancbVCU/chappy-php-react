@@ -1,6 +1,17 @@
 
+export function appendErrorClass(inputAttrs, errors, name, cssClass) {
+  console.log(inputAttrs);
+  console.log(errors)
 
+}
 
+export function errorMsg(errors, name) {
+  // console.log(errors[name]);
+  // console.log(`Error field: ${errors.field}`)
+  // console.log(`Error msg: ${errors.message}`)
+
+  return htmlspecialchars(errors[name]);
+}
 
 /**
  * Formats id based on value for name attribute.
@@ -9,6 +20,17 @@
  */
 export function formatId(name) {
   return name.replace(/\[]/, "");
+}
+
+function htmlspecialchars(str = '', { quotes = false } = {}) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;', // only if quotes=true
+    "'": '&#39;',  // only if quotes=true
+  };
+  return String(str).replace(quotes ? /[&<>"']/g : /[&<>]/g, ch => map[ch]);
 }
 
 /**
