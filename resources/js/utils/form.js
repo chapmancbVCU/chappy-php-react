@@ -1,15 +1,26 @@
-
+/**
+ * Appends error class to surrounding div of element.  If key is not 
+ * found based on value stored in name then nothing happens.
+ * @param {object} inputAttrs The attributes for the input element.
+ * @param {object} errors The object containing data about errors.
+ * @param {string} name The name of the field containing the error.
+ * @param {string} cssClass The class to append.
+ * @returns 
+ */
 export function appendErrorClass(inputAttrs, errors, name, cssClass) {
-  console.log(inputAttrs);
-  console.log(errors)
-
+  if(errors[name]) {
+    inputAttrs.className += " " + cssClass;
+  }
+  return inputAttrs;
 }
 
+/**
+ * 
+ * @param {object} errors The object containing data about errors.
+ * @param {string} name  The name of the field used to select key in object.
+ * @returns 
+ */
 export function errorMsg(errors, name) {
-  // console.log(errors[name]);
-  // console.log(`Error field: ${errors.field}`)
-  // console.log(`Error msg: ${errors.message}`)
-
   return htmlspecialchars(errors[name]);
 }
 
@@ -22,6 +33,27 @@ export function formatId(name) {
   return name.replace(/\[]/, "");
 }
 
+/**
+ * HTML-escapes a string (PHP `htmlspecialchars`-style).
+ *
+ * Escapes `&`, `<`, `>` by default (≈ `ENT_NOQUOTES`). When `quotes` is `true`,
+ * it also escapes double and single quotes (≈ `ENT_QUOTES`).
+ *
+ * ⚠️ Intended for **HTML text** context. For attributes/URLs, use a context-aware encoder.
+ *
+ * @param {string} [str=''] - The input string to escape.
+ * @param {Object} [options={}] - Options.
+ * @param {boolean} [options.quotes=false] - Also escape `"` and `'` when `true`.
+ * @returns {string} The escaped HTML string.
+ *
+ * @example
+ * htmlspecialchars('<p class="x">O\'Reilly & co</p>');
+ * // => "&lt;p class=&quot;x&quot;&gt;O'Reilly &amp; co&lt;/p&gt;"
+ *
+ * @example
+ * htmlspecialchars(`O'Reilly`, { quotes: true });
+ * // => "O&#39;Reilly"
+ */
 function htmlspecialchars(str = '', { quotes = false } = {}) {
   const map = {
     '&': '&amp;',
