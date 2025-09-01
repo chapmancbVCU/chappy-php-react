@@ -44,9 +44,14 @@ class ProfileController extends Controller {
             }
         }
 
+         $errors = [
+            'fname' => ['First Name is required'],
+            'lname' => ['Last Name is required.'],
+        ];
+        // dd($errors);
         $props = [
             'user' => $user,
-            'displayErrors' => $user->getErrorMessages(),
+            'displayMessages' => $errors,//$user->getErrorMessages(),
             'profileImages' => $profileImages,
         ];
         $this->view->setSiteTitle("Edit Details for {$user->username}");
