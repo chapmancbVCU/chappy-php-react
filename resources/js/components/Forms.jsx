@@ -18,9 +18,6 @@ export const CSRF = ({ name = 'csrf_token' } = {}) => {
  * - Appends an error class (e.g., `is-invalid`) to the input via `appendErrorClass()`.
  * - Resolves and displays field-specific error text via `errorMsg()`.
  *
- * ⚠️ Note: `value` here is applied as **`defaultValue`** (uncontrolled input).
- * If you need a controlled input, pass `inputAttrs={{ value, onChange }}` instead.
- *
  * @typedef {Object} InputProps
  * @property {'text'|'email'|'password'|'number'|'tel'|'url'|'file'|'date'|'datetime-local'|'time'|'search'|'color'} [type='text']
  *   HTML input type.
