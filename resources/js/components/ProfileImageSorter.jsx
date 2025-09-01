@@ -28,23 +28,23 @@ export default function ProfileImageSorter({
 
         let destroyed = false;
         (async () => {
-        // ✅ jQuery-UI runs AFTER jQuery is global
-        await import('jquery-ui-dist/jquery-ui');
+            // ✅ jQuery-UI runs AFTER jQuery is global
+            await import('jquery-ui-dist/jquery-ui');
 
-        if (destroyed) return;
+            if (destroyed) return;
 
-        const $el = $(el);
-        // Guard against double init (React StrictMode/HMR)
-        if ($el.data('ui-sortable')) {
-            $el.sortable('refresh');
-        } else {
-            $el.sortable({
-            axis: 'x',
-            placeholder: 'sortable-placeholder',
-            update: updateHidden,
-            });
-        }
-        updateHidden();
+            const $el = $(el);
+            // Guard against double init (React StrictMode/HMR)
+            if ($el.data('ui-sortable')) {
+                $el.sortable('refresh');
+            } else {
+                $el.sortable({
+                axis: 'x',
+                placeholder: 'sortable-placeholder',
+                update: updateHidden,
+                });
+            }
+            updateHidden();
         })();
 
         return () => {
