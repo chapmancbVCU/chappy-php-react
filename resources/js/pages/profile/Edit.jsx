@@ -1,7 +1,7 @@
 import React from "react";
 import '@css/profileImage.css';
 import Forms from "@/components/Forms";
-import { initializeTinyMCE } from "@/TinyMCE";
+
 import { Editor } from "@tinymce/tinymce-react";
 function Edit({user, displayMessages, profileImages}) {
     return (
@@ -16,8 +16,8 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"First Name"} 
                         name={"fname"}
                         value={user.fname}
-                        inputAttrs={{'className': 'form-control input-sm'}}
-                        divAttrs={{'className': 'form-group mb-3'}}
+                        inputAttrs={{className: 'form-control input-sm'}}
+                        divAttrs={{className: 'form-group mb-3'}}
                         errors={displayMessages}
                     />
                     <Forms.Input 
@@ -25,8 +25,8 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"Last Name"} 
                         name={"lname"}
                         value={user.lname}
-                        inputAttrs={{'className': 'form-control input-sm'}}
-                        divAttrs={{'className': 'form-group mb-3'}}
+                        inputAttrs={{className: 'form-control input-sm'}}
+                        divAttrs={{className: 'form-group mb-3'}}
                         errors={displayMessages}
                     />
                     <Forms.Input 
@@ -34,16 +34,17 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"Email"} 
                         name={"email"}
                         value={user.email}
-                        inputAttrs={{'className': 'form-control input-sm'}}
-                        divAttrs={{'className': 'form-group mb-3'}}
+                        inputAttrs={{className: 'form-control input-sm'}}
+                        divAttrs={{className: 'form-group mb-3'}}
                         errors={displayMessages}
                     />
-                    <Forms.TextArea
-                        label={"description"}
-                        name={"description"}
+                    <Forms.RichText
+                        label="Description"
+                        name="description"
                         value={user.description}
-                        inputAttrs={{'className': 'form-control input-sm', 'placeholder': 'Describe yourself here...'}}
-                        divAttrs={{'className': 'form-group mb-3'}}
+                        inputAttrs={{ placeholder: 'Describe yourself here...' }}
+                        divAttrs={{ className: 'form-group mb-3' }}
+                        errors={displayMessages}
                     />
                 </form>
             </div>
