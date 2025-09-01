@@ -3,7 +3,7 @@ import { getCsrf } from '@/utils/csrf';
 import { Editor } from '@tinymce/tinymce-react';
 import { appendErrorClass, errorMsg, formatId, normalizeAttrs } from '@/utils/form';
 import tinymce from '@/utils/tinyMCEBootstrap'
-
+import contentCssUrl from 'tinymce/skins/content/default/content.min.css?url'; 
 /**
  * Generates hidden component for csrf token.
  * @param {string} name The name for the csrf token. 
@@ -58,7 +58,7 @@ export const Input = ({
     value='',
     inputAttrs={},
     divAttrs={},
-    errors = []
+    errors=[]
 }) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
@@ -101,7 +101,7 @@ export const RichText = ({
     value = '',
     inputAttrs={},     
     divAttrs={},
-    errors={},
+    errors=[],
 }) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
@@ -128,6 +128,8 @@ export const RichText = ({
                     branding: false,
                     placeholder,
                     skin: false,
+                    content_css: contentCssUrl,  // let the iframe load this exact URL
+                    content_css_cors: true,
                     entity_encoding: 'raw',
                     plugins:
                         'advlist autolink lists link image charmap preview anchor ' +
@@ -191,7 +193,7 @@ export const TextArea = ({
     value='',
     inputAttrs={},
     divAttrs={},
-    errors={}
+    errors=[]
 }) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
