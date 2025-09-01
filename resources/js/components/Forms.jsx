@@ -54,8 +54,8 @@ export const Input = ({
     value='',
     inputAttrs={},
     divAttrs={},
-    errors = []}
-) => {
+    errors = []
+}) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
     let errorMessages = errorMsg(errors, name);
@@ -71,5 +71,29 @@ export const Input = ({
     )
 }
 
-const Forms = { CSRF, Input };
+export const TextArea = ({
+    label,
+    name,
+    value='',
+    inputAttrs={},
+    divAttrs={},
+    errors = []
+}) => {
+    const id = formatId(name);
+    const divString = normalizeAttrs(divAttrs);
+    let errorMessages = errorMsg(errors, name);
+    inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
+    const inputString = normalizeAttrs(inputAttrs);
+
+    return (
+        <div {...divString}>
+            <label className='control-label' htmlFor={id}>{label}</label>
+            <textarea id={id} name={name} {...inputString} defaultValue={value}></textarea>
+            <span className='invalid-feedback'>{errorMessages}</span>
+        </div>
+    )
+}
+
+
+const Forms = { CSRF, Input, TextArea };
 export default Forms;
