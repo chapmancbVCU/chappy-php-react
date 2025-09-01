@@ -1,8 +1,8 @@
 import React from "react";
-import '@css/profileImage.css';
+
 import Forms from "@/components/Forms";
 import route from "@/utils/route";
-
+import ProfileImageSorter from '@/components/ProfileImageSorter';
 function Edit({user, displayMessages, profileImages}) {
     return (
         <div className="row align-items-center justify-content-center mb-5">
@@ -56,6 +56,7 @@ function Edit({user, displayMessages, profileImages}) {
                         divAttrs={{className: 'form-group mb-3'}}
                     />
 
+                    <ProfileImageSorter initialImages={profileImages} deleteEndpoint="/profile/deleteImage" />
                     <div className="col-md-12 text-end">
                         <a href={route('profile')} className="btn btn-default">Cancel</a>
                         <Forms.SubmitTag label={"Submit"} inputAttrs={{className: 'btn btn-primary'}}/>
