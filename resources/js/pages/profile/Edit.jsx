@@ -46,6 +46,15 @@ function Edit({user, displayMessages, profileImages}) {
                         divAttrs={{ className: 'form-group mb-3' }}
                         errors={displayMessages}
                     />
+
+                    <Forms.Input 
+                        type={"file"}
+                        label={"Upload Profile Image (Optional"}
+                        name={"profileImage"}
+                        value={""}
+                        inputAttrs={{className: 'form-control', accept: 'image/gif image/jpeg image/png'}}
+                        divAttrs={{className: 'form-group mb-3'}}
+                    />
                 </form>
             </div>
         </div>
