@@ -1,5 +1,5 @@
 import React from "react";
-import SafeHtml from '@/utils/SafeHtml.jsx';
+import SafeHtml from '@/components/SafeHtml.jsx';
 import route from "@/utils/route";
 
 /**
