@@ -47,7 +47,7 @@ function Index({ user, profileImage }) {
                         {user.description && (
                             <tr>
                                 <td id="description" className="p-4" colSpan={2}>
-                                    <SafeHtml html={user.description} className="prose"/>
+                                    <SafeHtml html={user.description} decode className="prose"/>
                                 </td>
                             </tr>
                         )}
