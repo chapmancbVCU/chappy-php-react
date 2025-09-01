@@ -1,5 +1,5 @@
 import { getCsrf } from '@/utils/csrf';
-import { formatId, normalizeAttrs } from '@/utils/form';
+import { appendErrorClass, errorMsg, formatId, normalizeAttrs } from '@/utils/form';
 /**
  * Generates hidden component for csrf token.
  * @param {string} name The name for the csrf token. 
@@ -28,18 +28,21 @@ export const Input = ({
     const id = formatId(name);
     // console.log(`ID: ${id}`)
     
-    console.log(`divAttrs: ${divAttrs.class}`)
+    // console.log(`divAttrs: ${divAttrs.className}`)
     const divString = normalizeAttrs(divAttrs);
-    console.log(`divString: ${divString}`)
+    // console.log(`divString: ${divString}`)
 
-    console.log(`inputAttrs: ${divAttrs.class}`)
+    let errorMessages = errorMsg(errors, name);
+    // console.log(`inputAttrs: ${divAttrs.class}`)
+    // inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
     const inputString = normalizeAttrs(inputAttrs);
-    console.log(`inputString: ${inputString}`)
+    // console.log(`inputString: ${inputString}`)b
 
     return (
         <div {...divString}>
-            <label className='control-label' for={id}>{label}</label>
-            <input type={type} id={id} name={name} value={value} {...inputString}></input>
+            <label className='control-label' htmlFor={id}>{label}</label>
+            <input type={type} id={id} name={name} defaultValue={value} {...inputString} />
+            <span className='invalid-feedback'>{errorMessages}</span>
         </div>
     )
 }
