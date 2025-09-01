@@ -47,6 +47,7 @@ class ProfileController extends Controller {
          $errors = [
             'fname' => ['First Name is required'],
             'lname' => ['Last Name is required.'],
+            'description' => ['Description is required']
         ];
         // dd($errors);
         $props = [
