@@ -76,51 +76,54 @@ export const Input = ({
 }
 
 export const RichText = ({
-  label,
-  name,
-  value = '',
-  inputAttrs = {},     // e.g. { className: '...', placeholder: '...' }
-  divAttrs = {},       // e.g. { className: 'form-group mb-3' }
-  errors = [],
+    label,
+    name,
+    value = '',
+    inputAttrs = {},     
+    divAttrs = {},
+    errors = [],
 }) => {
-  const id = formatId(name);
-  const divString = normalizeAttrs(divAttrs);
-  const placeholder = inputAttrs.placeholder || '';
-  const [html, setHtml] = useState(String(value || ''));
+    const id = formatId(name);
+    const divString = normalizeAttrs(divAttrs);
+    const placeholder = inputAttrs.placeholder || '';
 
-  const decodeEntities = (s='') =>
-  new DOMParser().parseFromString(String(s), 'text/html').documentElement.textContent || '';
+    const decodeEntities = (s='') =>
+        new DOMParser().parseFromString(String(s), 'text/html').documentElement.textContent || '';
 
-  return (
-    <div {...divString}>
-        {label && <label className="control-label" htmlFor={id}>{label}</label>}
+    const initial = decodeEntities(value || '');
+    const [html, setHtml] = useState(initial);
 
-        <Editor
-            tinymce={tinymce}
-            id={id}
-            initialValue={decodeEntities(value)}
-            onEditorChange={(value) => setHtml(value)}
-            init={{
-                height: 300,
-                menubar: false,
-                branding: false,
-                placeholder,
-                skin: false,
-                plugins:
-                    'advlist autolink lists link image charmap preview anchor ' +
-                    'searchreplace visualblocks code fullscreen insertdatetime media ' +
-                    'table wordcount',
-                toolbar:
-                    'undo redo | bold italic underline strikethrough backcolor | ' +
-                    'outdent indent | alignleft aligncenter alignright alignjustify | ' +
-                    'removeformat | code fullscreen',
-                license_key: 'gpl',
-            }}
-        />
-        <input type="hidden" name={name} value={html} />
-        <span className="invalid-feedback d-block">{errorMsg(errors, name)}</span>
-    </div>
-  );
+    return (
+        <div {...divString}>
+            {label && <label className="control-label" htmlFor={id}>{label}</label>}
+
+            <Editor
+                tinymce={tinymce}
+                id={id}
+                initialValue={decodeEntities(value)}
+                onEditorChange={(value) => setHtml(value)}
+                init={{
+                    height: 300,
+                    menubar: false,
+                    branding: false,
+                    placeholder,
+                    skin: false,
+                    entity_encoding: 'raw',
+                    plugins:
+                        'advlist autolink lists link image charmap preview anchor ' +
+                        'searchreplace visualblocks code fullscreen insertdatetime media ' +
+                        'table wordcount',
+                    toolbar:
+                        'undo redo | bold italic underline strikethrough backcolor | ' +
+                        'outdent indent | alignleft aligncenter alignright alignjustify | ' +
+                        'removeformat | code fullscreen',
+                    license_key: 'gpl',
+                }}
+            />
+            <input type="hidden" name={name} value={html} />
+            <span className="invalid-feedback d-block">{errorMsg(errors, name)}</span>
+        </div>
+    );
 };
 
 export const SubmitTag = ({label, inputAttrs = []}) => {
