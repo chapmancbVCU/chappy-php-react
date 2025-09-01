@@ -15,9 +15,27 @@ function Edit({user, displayMessages, profileImages}) {
                         label={"First Name"} 
                         name={"fname"}
                         value={user.fname}
+                        inputAttrs={{'className': 'form-control input-sm is-invalid', 'placeholder': 'placeholder'}}
+                        divAttrs={{'className': 'form-group mb-3'}}
+                        errors={displayMessages}
+                    />
+                    <Forms.Input 
+                        text={"text"} 
+                        label={"Last Name"} 
+                        name={"lname"}
+                        value={user.lname}
                         inputAttrs={{'className': 'form-control input-sm', 'placeholder': 'placeholder'}}
                         divAttrs={{'className': 'form-group mb-3'}}
-                        errors={{'field': 'fname', "message": 'First name is required'}}
+                        errors={displayMessages}
+                    />
+                    <Forms.Input 
+                        text={"email"} 
+                        label={"Email"} 
+                        name={"email"}
+                        value={user.email}
+                        inputAttrs={{'className': 'form-control input-sm', 'placeholder': 'placeholder'}}
+                        divAttrs={{'className': 'form-group mb-3'}}
+                        errors={displayMessages}
                     />
                 </form>
             </div>
