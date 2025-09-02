@@ -11,6 +11,7 @@ function Edit({user, displayMessages, profileImages}) {
                 <hr />
                 <form className="form" action="" method="post" encType="multipart/form-data">
                     <Forms.CSRF />
+                    <Forms.DisplayErrors errors={displayMessages}/>
                     <Forms.Input 
                         type={"text"} 
                         label={"First Name"} 
@@ -18,7 +19,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.fname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        errors={displayMessages}
+                        // errors={displayMessages}
                     />
                     <Forms.Input 
                         type={"text"} 
@@ -27,7 +28,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.lname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        errors={displayMessages}
+                        // errors={displayMessages}
                     />
                     <Forms.Input 
                         type={"email"} 
@@ -36,7 +37,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.email}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        errors={displayMessages}
+                        // errors={displayMessages}
                     />
                     <Forms.RichText
                         label="Description"
@@ -44,7 +45,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.description}
                         inputAttrs={{ placeholder: 'Describe yourself here...' }}
                         divAttrs={{ className: 'form-group mb-3' }}
-                        errors={displayMessages}
+                        // errors={displayMessages}
                     />
 
                     <Forms.Input 

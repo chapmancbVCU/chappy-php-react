@@ -14,6 +14,54 @@ export const CSRF = ({ name = 'csrf_token' } = {}) => {
 }
 
 /**
+ * Creates an error bag containing all existing errors.
+ * @property {object} errors Object containing errors.
+ * @param {InputProps} param0 
+ * @returns {HTMLDivElement} The error bag.
+ */
+export const DisplayErrors = ({errors}) => {
+    const hasErrors = (errors.length !== 0) ? 'has-errors' : '';
+    let list = Object.values(errors).flat(Infinity);
+
+    return (
+        <div className='form-errors'>
+            <ul className={`bg-light ${hasErrors}`}>
+            {list.map((field, index) => (
+                <ul key={index} className='text-danger'>
+                    {list[index]}
+                </ul>
+            ))}
+            </ul>
+
+        </div>
+    )
+}
+
+/**
+ * Returns error messages for a field referenced by name.
+ * @property {object} errors Object containing errors.
+ * @property {string} name The name of the field we want to reference. 
+ * @param {InputProps} param0 
+ * @returns {HTMLSpanElement} The list of errors for a particular field.
+ */
+const FieldErrors = ({ errors = {}, name }) => {
+    // console.log(errors)
+    const list = Array.isArray(errors?.[name])
+        ? errors[name]
+        : (errors?.[name] != null ? [errors[name]] : []);
+
+    if (!list.length) return null;
+
+    return (
+        <span className="invalid-feedback d-block">
+            {list.map((message, index) => (
+                <div key={index}>{htmlspecialchars(message)}</div>
+            ))}
+        </span>
+    );
+};
+
+/**
  * Render a labeled, uncontrolled `<input>` with validation styling and messages.
  *
  * This component:
@@ -73,29 +121,6 @@ export const Input = ({
         </div>
     )
 }
-
-/**
- * Returns error messages for a field referenced by name.
- * @property {object} errors Object containing errors.
- * @property {string} name The name of the field we want to reference. 
- * @param {*} param0 
- * @returns {HTMLSpanElement} The list of errors for a particular field.
- */
-const FieldErrors = ({ errors = {}, name }) => {
-    const list = Array.isArray(errors?.[name])
-        ? errors[name]
-        : (errors?.[name] != null ? [errors[name]] : []);
-
-    if (!list.length) return null;
-
-    return (
-        <span className="invalid-feedback d-block">
-            {list.map((message, index) => (
-                <div key={index}>{htmlspecialchars(message)}</div>
-            ))}
-        </span>
-    );
-};
 
 /**
  * Rich text editor field (TinyMCE) that posts HTML via a hidden input.
@@ -231,5 +256,5 @@ export const TextArea = ({
     )
 }
 
-const Forms = { CSRF, Input, RichText, SubmitTag, TextArea };
+const Forms = { CSRF, DisplayErrors, Input, RichText, SubmitTag, TextArea };
 export default Forms;
