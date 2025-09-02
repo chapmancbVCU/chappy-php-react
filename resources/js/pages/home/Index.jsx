@@ -7,7 +7,7 @@ import React from "react";
  * @returns {HTMLDivElement} The contents of Index view.
  */
 export default function Index({ user }) {
-  const username = user.username ?? 'Guest';
+  const username = user.fname ?? 'Guest';
   return (
     <div className="container">
       <div className="text-center">
