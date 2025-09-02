@@ -7,10 +7,12 @@ import React from "react";
  * @returns {HTMLDivElement} The contents of Index view.
  */
 export default function Index({ user }) {
+  const username = user.username ?? 'Guest';
   return (
     <div className="container">
       <div className="text-center">
-        <h1 className="display-4">Hello, {user.username} 👋, welcome to</h1>
+        <h1 className="display-4">Hello, {username} 👋</h1>
+        <h1 className="display-4">Welcome to</h1>
         <div className="col-12 mx-auto text-center">
           <img className="w-50" src="public/logo.png" alt="Framework Logo" />
         </div>

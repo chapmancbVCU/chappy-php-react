@@ -16,7 +16,7 @@ class HomeController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
-        $props = ['user' => $user ?? 'Guest',];
+        $props = ['user' => $user ?? 'Guest'];
         $this->view->renderJSX('home.Index', $props);
     }
 }
