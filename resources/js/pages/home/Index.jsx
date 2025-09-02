@@ -45,8 +45,8 @@ export default function Index({ user }) {
 
       <div className="row text-center g-4 mt-4">
         <div className="col-md-4">
-          <h4>🧩 Composer Support</h4>
-          <p>Manage your dependencies using Composer just like Laravel or Symfony.</p>
+          <h4>🧩 Composer and npm Support</h4>
+          <p>Manage your dependencies using Composer npm.</p>
         </div>
         <div className="col-md-4">
           <h4>📁 User Management</h4>
