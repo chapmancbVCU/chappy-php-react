@@ -45,7 +45,6 @@ export const DisplayErrors = ({errors}) => {
  * @returns {HTMLSpanElement} The list of errors for a particular field.
  */
 const FieldErrors = ({ errors = {}, name }) => {
-    // console.log(errors)
     const list = Array.isArray(errors?.[name])
         ? errors[name]
         : (errors?.[name] != null ? [errors[name]] : []);
