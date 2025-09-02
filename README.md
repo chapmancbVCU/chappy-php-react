@@ -2,7 +2,7 @@
   <img src="public/logo.png" alt="Chappy.php logo">
 </div>
 
-# Chappy.php Starter Application
+# Chappy.php React Starter Application
 
 [Visit our Wiki](https://chapmancbvcu.github.io/chappy-php-starter/)
 
