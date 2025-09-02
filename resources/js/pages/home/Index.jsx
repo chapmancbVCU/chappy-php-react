@@ -16,9 +16,9 @@ export default function Index({ user }) {
         <div className="col-12 mx-auto text-center">
           <img className="w-50" src="public/logo.png" alt="Framework Logo" />
         </div>
-        <p>This view is powered by React + Vite.</p>
-        <p className="lead mt-3">
-          A lightweight and modern PHP framework built for simplicity, speed, and developer happiness.
+        <p className="lead my-3">This view is powered by React + Vite.</p>
+        <p className="lead my-3">
+          A lightweight and modern PHP framework built for simplicity, speed, and the power of React.js.
         </p>
 
         <div className="d-flex justify-content-center mt-4 flex-wrap gap-3">
