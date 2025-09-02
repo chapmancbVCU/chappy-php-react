@@ -20,9 +20,18 @@ export function appendErrorClass(inputAttrs, errors, name, cssClass) {
  * @param {string} name  The name of the field used to select key in object.
  * @returns 
  */
-export function errorMsg(errors, name) {
-  return htmlspecialchars(errors[name]);
-}
+// export function errorMsg(errors, name) {
+//   if(errors[name] !== undefined && Object.keys(errors[name]).length > 1) {
+//     let temp = errors[name].map(htmlspecialchars).join('\n');
+//     // let temp = "";
+//     // for(let i = 0; i < Object.keys(errors[name]).length; i++) {
+//     //   temp += errors[name][i] + "\n";
+//     // }
+//     // console.log(temp)
+//     return temp;
+//   }
+//   return htmlspecialchars(errors[name]);
+// }
 
 /**
  * Formats id based on value for name attribute.
@@ -54,7 +63,7 @@ export function formatId(name) {
  * htmlspecialchars(`O'Reilly`, { quotes: true });
  * // => "O&#39;Reilly"
  */
-function htmlspecialchars(str = '', { quotes = false } = {}) {
+export function htmlspecialchars(str = '', { quotes = false } = {}) {
   const map = {
     '&': '&amp;',
     '<': '&lt;',

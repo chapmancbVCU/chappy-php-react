@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { getCsrf } from '@/utils/csrf';
 import { Editor } from '@tinymce/tinymce-react';
-import { appendErrorClass, errorMsg, formatId, normalizeAttrs } from '@/utils/form';
+import { appendErrorClass, htmlspecialchars, formatId, normalizeAttrs } from '@/utils/form';
 import tinymce from '@/utils/tinyMCEBootstrap'
 import contentCssUrl from 'tinymce/skins/content/default/content.min.css?url'; 
 /**
@@ -62,7 +62,6 @@ export const Input = ({
 }) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
-    let errorMessages = errorMsg(errors, name);
     inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
     const inputString = normalizeAttrs(inputAttrs);
 
@@ -70,10 +69,26 @@ export const Input = ({
         <div {...divString}>
             <label className='control-label' htmlFor={id}>{label}</label>
             <input type={type} id={id} name={name} defaultValue={value} {...inputString} />
-            <span className='invalid-feedback'>{errorMessages}</span>
+            <FieldErrors errors={errors} name={name} />
         </div>
     )
 }
+
+export const FieldErrors = ({ errors = {}, name }) => {
+  const list = Array.isArray(errors?.[name])
+    ? errors[name]
+    : (errors?.[name] != null ? [errors[name]] : []);
+
+  if (!list.length) return null;
+
+  return (
+    <span className="invalid-feedback d-block">
+      {list.map((m, i) => (
+        <div key={i}>{htmlspecialchars(m)}</div>
+      ))}
+    </span>
+  );
+};
 
 /**
  * Rich text editor field (TinyMCE) that posts HTML via a hidden input.
@@ -143,7 +158,7 @@ export const RichText = ({
                 }}
             />
             <input type="hidden" name={name} value={html} />
-            <span className="invalid-feedback d-block">{errorMsg(errors, name)}</span>
+            <FieldErrors errors={errors} name={name} />
         </div>
     );
 };
@@ -197,7 +212,6 @@ export const TextArea = ({
 }) => {
     const id = formatId(name);
     const divString = normalizeAttrs(divAttrs);
-    let errorMessages = errorMsg(errors, name);
     inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
     const inputString = normalizeAttrs(inputAttrs);
 
@@ -205,7 +219,7 @@ export const TextArea = ({
         <div {...divString}>
             <label className='control-label' htmlFor={id}>{label}</label>
             <textarea id={id} name={name} {...inputString} defaultValue={value}></textarea>
-            <span className='invalid-feedback'>{errorMessages}</span>
+            <FieldErrors errors={errors} name={name} />
         </div>
     )
 }
