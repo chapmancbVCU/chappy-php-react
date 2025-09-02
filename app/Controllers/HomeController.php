@@ -16,23 +16,7 @@ class HomeController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
-        $myInput = '';
-
-        if($this->request->isPost()) {
-            $this->request->csrfCheck();
-            $myInput = $this->request->get('myInput');
-            flashMessage('info', "You entered: {$myInput}");
-        }
-
-        $props = [
-            'action' => route('home.index'),
-            'user' => $user ?? 'Guest',
-            'myInput' => $myInput
-        ];
-
-        // Set $props to view->props works as well.
-        //$this->view->props = $props;
-        //$this->view->renderJSX('home.Index');
+        $props = ['user' => $user ?? 'Guest',];
         $this->view->renderJSX('home.Index', $props);
     }
 }

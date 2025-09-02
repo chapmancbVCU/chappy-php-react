@@ -1,22 +1,60 @@
 import React from "react";
-import { CSRF } from "@/components/Forms";
 
-export default function Index({ user, action ,myInput }) {
+/**
+ * The home page.
+ * @property {object} user The currently logged in user.
+ * @param {InputProps} param0 
+ * @returns {HTMLDivElement} The contents of Index view.
+ */
+export default function Index({ user }) {
   return (
-    <main>
-      <form method="post" action={action}>
-        <CSRF />
-
-        <div className="mb-3">
-          <label className="form-label">Name</label>
-          <input className="form-control" name="myInput" defaultValue={myInput ?? ''} />
+    <div className="container">
+      <div className="text-center">
+        <h1 className="display-4">Hello, {user.username} 👋, welcome to</h1>
+        <div className="col-12 mx-auto text-center">
+          <img className="w-50" src="public/logo.png" alt="Framework Logo" />
         </div>
+        <p>This view is powered by React + Vite.</p>
+        <p className="lead mt-3">
+          A lightweight and modern PHP framework built for simplicity, speed, and developer happiness.
+        </p>
 
-        <button className="btn btn-primary" type="submit">Save</button>
-      </form>
+        <div className="d-flex justify-content-center mt-4 flex-wrap gap-3">
+          <a className="btn btn-primary" href="https://chapmancbvcu.github.io/chappy-php-starter/">📘 View Documentation</a>
+        </div>
+      </div>
 
-      <h1>Hello, {user.username} 👋{myInput}</h1>
-      <p>This view is powered by React + Vite.</p>
-    </main>
+      <hr className="my-5"/>
+
+      <div className="row text-center g-4">
+        <div className="col-md-4">
+          <h4>🔧 MVC Architecture</h4>
+          <p>Familiar routing and controller setup with simple view rendering.</p>
+        </div>
+        <div className="col-md-4">
+          <h4>🛡️ Custom Forms With Validation</h4>
+          <p>A FormHelper class with support for many commonly used elements and built-in server-side form validation with error message support.</p>
+        </div>
+        <div className="col-md-4">
+          <h4>⚙️ Project Generator</h4>
+          <p>Generate project skeletons and database migrations using console commands.</p>
+        </div>
+      </div>
+
+      <div className="row text-center g-4 mt-4">
+        <div className="col-md-4">
+          <h4>🧩 Composer Support</h4>
+          <p>Manage your dependencies using Composer just like Laravel or Symfony.</p>
+        </div>
+        <div className="col-md-4">
+          <h4>📁 User Management</h4>
+          <p>Includes ACL support and authentication out of the box.</p>
+        </div>
+        <div className="col-md-4">
+          <h4>📄 Simple Documentation</h4>
+          <p>Markdown and API documentation included and easy to customize.</p>
+        </div>
+      </div>
+    </div>
   );
 }
