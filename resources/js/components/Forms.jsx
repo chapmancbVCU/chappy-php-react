@@ -75,19 +75,19 @@ export const Input = ({
 }
 
 export const FieldErrors = ({ errors = {}, name }) => {
-  const list = Array.isArray(errors?.[name])
-    ? errors[name]
-    : (errors?.[name] != null ? [errors[name]] : []);
+    const list = Array.isArray(errors?.[name])
+        ? errors[name]
+        : (errors?.[name] != null ? [errors[name]] : []);
 
-  if (!list.length) return null;
+    if (!list.length) return null;
 
-  return (
-    <span className="invalid-feedback d-block">
-      {list.map((m, i) => (
-        <div key={i}>{htmlspecialchars(m)}</div>
-      ))}
-    </span>
-  );
+    return (
+        <span className="invalid-feedback d-block">
+            {list.map((message, index) => (
+                <div key={index}>{htmlspecialchars(message)}</div>
+            ))}
+        </span>
+    );
 };
 
 /**
