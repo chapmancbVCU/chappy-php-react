@@ -74,6 +74,13 @@ export const Input = ({
     )
 }
 
+/**
+ * Returns error messages for a field referenced by name.
+ * @property {object} errors Object containing errors.
+ * @property {string} name The name of the field we want to reference. 
+ * @param {*} param0 
+ * @returns {HTMLSpanElement} The list of errors for a particular field.
+ */
 export const FieldErrors = ({ errors = {}, name }) => {
     const list = Array.isArray(errors?.[name])
         ? errors[name]
