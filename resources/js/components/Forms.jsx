@@ -8,13 +8,34 @@ import contentCssUrl from 'tinymce/skins/content/default/content.min.css?url';
 /**
  * Returns Button component with text set.
  * @property {string} label The contents of the button's label.
- * @property {object} inputAttrs Optional attributes (e.g., `{ placeholder: '...' }`).
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
  * @param {*} param0 
  * @returns {HTMLButtonElement} A button element.
  */
 export const Button = ({label, inputAttrs={}}) => {
-    inputString = normalizeAttrs(inputAttrs);
+    const inputString = normalizeAttrs(inputAttrs);
     return <Button type="button" {...inputString}>{label}</Button>;
+}
+
+/**
+ * Supports ability to create a styled button and styled surrounding div 
+ * block.  Supports ability to have functions for event handlers".
+ * @property {string} label The contents of the button's label.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
+ * @param {*} param0 
+ * @returns 
+ */
+export const ButtonBlock = ({label, inputAttrs, divAttrs}) => {
+    const divString = normalizeAttrs(divAttrs);
+    return (
+        <div {...divString}>
+            <Button label={label} inputAttrs={inputAttrs} />
+        </div>
+    )
 }
 
 /**
@@ -84,16 +105,18 @@ const FieldErrors = ({ errors = {}, name }) => {
  *
  * @typedef {Object} InputProps
  * @property {'text'|'email'|'password'|'number'|'tel'|'url'|'file'|'date'|'datetime-local'|'time'|'search'|'color'} [type='text']
- *   HTML input type.
- * @property {string} label
- *   Visible label text for the field.
- * @property {string} name
- *   Field name; also used to derive the `id`.
- * @property {string|number} [value='']
- *   Initial value (applied as `defaultValue`).
- * @property {Object} [inputAttrs={}] Optional attributes (e.g., `{ placeholder: '...' }`).
- * @property {Object} [divAttrs={}]
- *   Props for the wrapper `<div>` (e.g., `className`, `style`).
+ * HTML input type.
+ * @property {string} label Sets the label for this input.
+ * @property {string} name Sets the value for the name, for, and id attributes 
+ * for this input.
+ * @property {string|number} value The value we want to set.  We can use this to set 
+ * the value of the value attribute during form validation.  Default value 
+ * is the empty string.  It can be set with values during form validation 
+ * and forms used for editing records.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
  * @property {Record<string, string[]>|string[]} [errors=[]]
  *   Error bag or array; `errorMsg(errors, name)` should extract messages for this field.
  *
@@ -143,11 +166,17 @@ export const Input = ({
  * - UI skin CSS is expected to be imported elsewhere; `skin:false` prevents URL fetches.
  *
  * @typedef {Object} RichTextProps
- * @property {string}  [label]                 Visible label text.
- * @property {string}  name                    Field name; also used to derive the editor `id`.
- * @property {string}  [value='']              Initial HTML (may be entity-encoded).
- * @property {Object}  [inputAttrs={}]         Optional attributes (e.g., `{ placeholder: '...' }`).
- * @property {Object}  [divAttrs={}]           Wrapper `<div>` attributes (e.g., `{ className: 'mb-3' }`).
+ * @property {string} label Sets the label for this input.
+ * @property {string} name Sets the value for the name, for, and id attributes 
+ * for this input.
+ * @property {string} value The value we want to set.  We can use this to set 
+ * the value of the value attribute during form validation.  Default value 
+ * is the empty string.  It can be set with values during form validation 
+ * and forms used for editing records.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
  * @property {Record<string,string[]>|string[]} [errors=[]] Error bag used by `errorMsg(errors, name)`.
  *
  * @param {RichTextProps} props
@@ -210,12 +239,12 @@ export const RichText = ({
  * Submit input helper.
  *
  * @typedef {Object} SubmitTagProps
- * @property {string} label             Button label/value.
- * @property {Object} [inputAttrs={}]   Extra attributes for `<input type="submit">`
- *                                      (e.g., `{ className: 'btn btn-primary', disabled: true }`).
- *
+ * @property {string} label Sets the value of the text describing the 
+ * button.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
  * @param {SubmitTagProps} props
- * @returns {HTMLInputElement}
+ * @returns {HTMLInputElement} An input element of type submit.
  */
 export const SubmitTag = ({label, inputAttrs={}}) => {
     const inputString = normalizeAttrs(inputAttrs);
@@ -234,12 +263,16 @@ export const SubmitTag = ({label, inputAttrs={}}) => {
  * - Renders field-specific error text from `errorMsg(errors, name)`.
  *
  * @typedef {Object} TextAreaProps
- * @property {string}  label                 Visible label text.
+ * @property {string} label Sets the label for this input.
  * @property {string}  name                  Field name; also used to derive the `id`.
- * @property {string}  [value='']            Initial text (applied as `defaultValue`).
- * @property {Object}  [inputAttrs={}]       Extra attributes for `<textarea>`
- *                                           (e.g., `{ rows: 5, className: 'form-control' }`).
- * @property {Object}  [divAttrs={}]         Wrapper `<div>` attributes (e.g., `{ className: 'mb-3' }`).
+ * @property {string} value The value we want to set.  We can use this to set 
+ * the value of the value attribute during form validation.  Default value 
+ * is the empty string.  It can be set with values during form validation 
+ * and forms used for editing records.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
  * @property {Record<string,string[]>|string[]} [errors=[]] Error bag.
  *
  * @param {TextAreaProps} props
