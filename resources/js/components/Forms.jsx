@@ -4,6 +4,19 @@ import { Editor } from '@tinymce/tinymce-react';
 import { appendErrorClass, htmlspecialchars, formatId, normalizeAttrs } from '@/utils/form';
 import tinymce from '@/utils/tinyMCEBootstrap'
 import contentCssUrl from 'tinymce/skins/content/default/content.min.css?url'; 
+
+/**
+ * Returns Button component with text set.
+ * @property {string} label The contents of the button's label.
+ * @property {object} inputAttrs Optional attributes (e.g., `{ placeholder: '...' }`).
+ * @param {*} param0 
+ * @returns {HTMLButtonElement} A button element.
+ */
+export const Button = ({label, inputAttrs={}}) => {
+    inputString = normalizeAttrs(inputAttrs);
+    return <Button type="button" {...inputString}>{label}</Button>;
+}
+
 /**
  * Generates hidden component for csrf token.
  * @param {string} name The name for the csrf token. 
@@ -78,8 +91,7 @@ const FieldErrors = ({ errors = {}, name }) => {
  *   Field name; also used to derive the `id`.
  * @property {string|number} [value='']
  *   Initial value (applied as `defaultValue`).
- * @property {Object} [inputAttrs={}]
- *   Additional props spread onto the `<input>` (e.g., `placeholder`, `className`, `required`, `min`, `max`, `step`, `onChange`).
+ * @property {Object} [inputAttrs={}] Optional attributes (e.g., `{ placeholder: '...' }`).
  * @property {Object} [divAttrs={}]
  *   Props for the wrapper `<div>` (e.g., `className`, `style`).
  * @property {Record<string, string[]>|string[]} [errors=[]]
@@ -255,5 +267,13 @@ export const TextArea = ({
     )
 }
 
-const Forms = { CSRF, DisplayErrors, Input, RichText, SubmitTag, TextArea };
+const Forms = { 
+    Button,
+    CSRF, 
+    DisplayErrors, 
+    Input, 
+    RichText, 
+    SubmitTag, 
+    TextArea 
+};
 export default Forms;
