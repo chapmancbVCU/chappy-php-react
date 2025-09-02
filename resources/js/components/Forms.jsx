@@ -86,7 +86,7 @@ const FieldErrors = ({ errors = {}, name }) => {
  *   Error bag or array; `errorMsg(errors, name)` should extract messages for this field.
  *
  * @param {InputProps} props
- * @returns {JSX.Element} Labeled input with optional validation message.
+ * @returns {HTMLDListElement} Labeled input with optional validation message.
  *
  * @example
  * <Input
@@ -203,7 +203,7 @@ export const RichText = ({
  *                                      (e.g., `{ className: 'btn btn-primary', disabled: true }`).
  *
  * @param {SubmitTagProps} props
- * @returns {JSX.Element}
+ * @returns {HTMLInputElement}
  */
 export const SubmitTag = ({label, inputAttrs={}}) => {
     const inputString = normalizeAttrs(inputAttrs);
@@ -231,7 +231,7 @@ export const SubmitTag = ({label, inputAttrs={}}) => {
  * @property {Record<string,string[]>|string[]} [errors=[]] Error bag.
  *
  * @param {TextAreaProps} props
- * @returns {JSX.Element}
+ * @returns {HTMLTextAreaElement}
  */
 export const TextArea = ({
     label,
