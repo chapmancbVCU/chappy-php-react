@@ -81,7 +81,7 @@ export const Input = ({
  * @param {*} param0 
  * @returns {HTMLSpanElement} The list of errors for a particular field.
  */
-export const FieldErrors = ({ errors = {}, name }) => {
+const FieldErrors = ({ errors = {}, name }) => {
     const list = Array.isArray(errors?.[name])
         ? errors[name]
         : (errors?.[name] != null ? [errors[name]] : []);
