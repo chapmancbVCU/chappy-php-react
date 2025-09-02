@@ -53,7 +53,7 @@ class ProfileController extends Controller {
         // dd($user->getErrorMessages());
         $props = [
             'user' => $user,
-            'displayMessages' => $errors,//$user->getErrorMessages(),
+            'displayMessages' => $user->getErrorMessages(),
             'profileImages' => $profileImages,
         ];
         $this->view->setSiteTitle("Edit Details for {$user->username}");
