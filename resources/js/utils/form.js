@@ -1,17 +1,18 @@
 /**
- * Appends error class to surrounding div of element.  If key is not 
- * found based on value stored in name then nothing happens.
- * @param {object} inputAttrs The attributes for the input element.
+ * Adds name of error classes to div associated with a form field.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
  * @param {object} errors The object containing data about errors.
- * @param {string} name The name of the field containing the error.
- * @param {string} cssClass The class to append.
- * @returns 
+ * @param {string} name The name of the field associated with this error.
+ * @param {string} cssClass Name of the class used to identify errors for a 
+ * form field.
+ * @returns {object} Div attributes with error classes added
  */
-export function appendErrorClass(inputAttrs, errors, name, cssClass) {
+export function appendErrorClass(attrs, errors, name, cssClass) {
   if(errors[name]) {
-    inputAttrs.className += " " + cssClass;
+    attrs.className += " " + cssClass;
   }
-  return inputAttrs;
+  return attrs;
 }
 
 /**
