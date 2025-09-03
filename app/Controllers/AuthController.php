@@ -29,14 +29,12 @@ class AuthController extends Controller {
                 $loginModel = AuthService::login($this->request, $loginModel, $_POST['username']);
             }
         }
-        $this->view->login = $loginModel;
-        $this->view->displayErrors = $loginModel->getErrorMessages();
+
         $this->view->props = [
             'login' => $loginModel,
             'errors' => $loginModel->getErrorMessages()
         ];
         $this->view->renderJsx('auth.Login');
-        // $this->view->render('auth.login');
     }
 
     /**
