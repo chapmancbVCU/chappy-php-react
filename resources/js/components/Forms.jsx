@@ -72,11 +72,11 @@ export const DisplayErrors = ({errors}) => {
 }
 
 /**
- * Returns error messages for a field referenced by name.
- * @property {object} errors Object containing errors.
- * @property {string} name The name of the field we want to reference. 
+ * Renders an error message for a particular form field.
+ * @property {object} errors The error object.
+ * @property {string} name Used to search errors object for key/form field.
  * @param {InputProps} param0 
- * @returns {HTMLSpanElement} The list of errors for a particular field.
+ * @returns {HTMLSpanElement} The error message for a particular field.
  */
 const FieldErrors = ({ errors = {}, name }) => {
     const list = Array.isArray(errors?.[name])
@@ -95,17 +95,14 @@ const FieldErrors = ({ errors = {}, name }) => {
 };
 
 /**
- * Render a labeled, uncontrolled `<input>` with validation styling and messages.
- *
- * This component:
- * - Derives a stable `id` from `name` via `formatId()`.
- * - Normalizes wrapper and input attributes (e.g., `class` → `className`) via `normalizeAttrs()`.
- * - Appends an error class (e.g., `is-invalid`) to the input via `appendErrorClass()`.
- * - Resolves and displays field-specific error text via `errorMsg()`.
+ * Assists in the development of forms input blocks in forms.  It accepts 
+ * parameters for setting attribute tags in the form section.  Not to be 
+ * used for inputs of type "Submit"  For submit inputs use the submitBlock 
+ * or submitTag functions.
  *
  * @typedef {Object} InputProps
- * @property {'text'|'email'|'password'|'number'|'tel'|'url'|'file'|'date'|'datetime-local'|'time'|'search'|'color'} [type='text']
- * HTML input type.
+ * @property {'color'|'date'|'date-local'|'email'|'file'|'month'|'number'|'password'|'range'|'search'|'tel'|'text'|'time'|'url'|'week'} [type='text']
+ * The input type we want to generate.
  * @property {string} label Sets the label for this input.
  * @property {string} name Sets the value for the name, for, and id attributes 
  * for this input.
@@ -117,9 +114,8 @@ const FieldErrors = ({ errors = {}, name }) => {
  * attributes of the input string.  The default value is an empty object.
  * @property {object} outputAttrs The values used to set the class and other 
  * attributes of the surrounding div.  The default value is an empty object.
- * @property {Record<string, string[]>|string[]} [errors=[]]
- *   Error bag or array; `errorMsg(errors, name)` should extract messages for this field.
- *
+ * @property {Record<string, string[]>|string[]} [errors=[]]The errors object.  
+ * Default value is an empty object.
  * @param {InputProps} props
  * @returns {HTMLDListElement} Labeled input with optional validation message.
  *
@@ -236,7 +232,7 @@ export const RichText = ({
 };
 
 /**
- * Submit input helper.
+ * Create a input element of type submit.
  *
  * @typedef {Object} SubmitTagProps
  * @property {string} label Sets the value of the text describing the 
@@ -254,17 +250,13 @@ export const SubmitTag = ({label, inputAttrs={}}) => {
 }
 
 /**
- * Labeled, uncontrolled `<textarea>` with validation styling and messages.
- *
- * Behavior:
- * - Derives a stable `id` from `name` via `formatId()`.
- * - Normalizes wrapper/input attributes via `normalizeAttrs()` (e.g., `class` → `className`).
- * - Appends an error class (e.g., `is-invalid`) via `appendErrorClass()`.
- * - Renders field-specific error text from `errorMsg(errors, name)`.
+ * Assists in the development of textarea in forms.  It accepts parameters 
+ * for setting  attribute tags in the form section.
  *
  * @typedef {Object} TextAreaProps
  * @property {string} label Sets the label for this input.
- * @property {string}  name                  Field name; also used to derive the `id`.
+ * @property {string}  name Sets the value for the name, for, and id attributes 
+ * for this input.
  * @property {string} value The value we want to set.  We can use this to set 
  * the value of the value attribute during form validation.  Default value 
  * is the empty string.  It can be set with values during form validation 
@@ -273,10 +265,11 @@ export const SubmitTag = ({label, inputAttrs={}}) => {
  * attributes of the input string.  The default value is an empty object.
  * @property {object} outputAttrs The values used to set the class and other 
  * attributes of the surrounding div.  The default value is an empty object.
- * @property {Record<string,string[]>|string[]} [errors=[]] Error bag.
+ * @property {Record<string,string[]>|string[]} [errors=[]] The errors object.  
+ * Default value is an empty object.
  *
  * @param {TextAreaProps} props
- * @returns {HTMLTextAreaElement}
+ * @returns {HTMLTextAreaElement} A surrounding div and the textarea element.
  */
 export const TextArea = ({
     label,
