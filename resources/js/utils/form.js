@@ -16,25 +16,6 @@ export function appendErrorClass(attrs, errors, name, cssClass) {
 }
 
 /**
- * 
- * @param {object} errors The object containing data about errors.
- * @param {string} name  The name of the field used to select key in object.
- * @returns 
- */
-// export function errorMsg(errors, name) {
-//   if(errors[name] !== undefined && Object.keys(errors[name]).length > 1) {
-//     let temp = errors[name].map(htmlspecialchars).join('\n');
-//     // let temp = "";
-//     // for(let i = 0; i < Object.keys(errors[name]).length; i++) {
-//     //   temp += errors[name][i] + "\n";
-//     // }
-//     // console.log(temp)
-//     return temp;
-//   }
-//   return htmlspecialchars(errors[name]);
-// }
-
-/**
  * Formats id based on value for name attribute.
  * @param {string} name Name attribute for form element.
  * @returns {string} The value for the id attribute.
