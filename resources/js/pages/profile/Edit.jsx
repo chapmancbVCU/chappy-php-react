@@ -3,7 +3,7 @@ import React from "react";
 import Forms from "@/components/Forms";
 import route from "@/utils/route";
 import ProfileImageSorter from '@/components/ProfileImageSorter';
-function Edit({user, displayMessages, profileImages}) {
+function Edit({user, errors, profileImages}) {
     return (
         <div className="row align-items-center justify-content-center mb-5">
             <div className="col-md-6 bg-light p-3">
@@ -11,7 +11,7 @@ function Edit({user, displayMessages, profileImages}) {
                 <hr />
                 <form className="form" action="" method="post" encType="multipart/form-data">
                     <Forms.CSRF />
-                    <Forms.DisplayErrors errors={displayMessages}/>
+                    <Forms.DisplayErrors errors={errors}/>
                     <Forms.Input 
                         type={"text"} 
                         label={"First Name"} 
@@ -19,7 +19,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.fname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        // errors={displayMessages}
+                        // errors={errors}
                     />
                     <Forms.Input 
                         type={"text"} 
@@ -28,7 +28,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.lname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        // errors={displayMessages}
+                        // errors={errors}
                     />
                     <Forms.Input 
                         type={"email"} 
@@ -37,7 +37,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.email}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        // errors={displayMessages}
+                        // errors={errors}
                     />
                     <Forms.RichText
                         label="Description"
@@ -45,7 +45,7 @@ function Edit({user, displayMessages, profileImages}) {
                         value={user.description}
                         inputAttrs={{ placeholder: 'Describe yourself here...' }}
                         divAttrs={{ className: 'form-group mb-3' }}
-                        // errors={displayMessages}
+                        // errors={errors}
                     />
 
                     <Forms.Input 
