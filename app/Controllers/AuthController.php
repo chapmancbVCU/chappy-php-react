@@ -6,10 +6,6 @@ use Core\Models\Login;
 use Core\Services\ACLService;
 use Core\Models\ProfileImages;
 use Core\Services\AuthService;
-use Core\Lib\Events\EventManager;
-use Core\Lib\Events\UserRegistered;
-use Core\Services\NotificationService;
-use Core\Services\UserService;
 
 /**
  * Implements support for our Auth controller.  Functions found in this 
@@ -35,7 +31,7 @@ class AuthController extends Controller {
         }
         $this->view->login = $loginModel;
         $this->view->displayErrors = $loginModel->getErrorMessages();
-        $this->view->render('auth.login');
+        $this->view->renderJsx('auth.Login');
     }
 
     /**
