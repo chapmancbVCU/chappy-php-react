@@ -267,7 +267,7 @@ const FieldErrors = ({ errors = {}, name }) => {
  * Generates a hidden input element.
  * @property {string} The value for the name and id attributes.
  * @property {string|number} The value for the value attribute.
- * @param {*} param0 
+ * @param {InputProps} param0 
  * @returns {HTMLInputElement} The html input element with type hidden
  */
 const Hidden = ({
@@ -277,6 +277,20 @@ const Hidden = ({
     return <input type="hidden" name={name} id={name} value={value} />
 }
 
+/**
+ * Generates an HTML output element.
+ * @property {string} name Sets the value for the name attributes for this 
+ * input.
+ * @property {string} forAttr Sets the value for the for attribute.
+ * @param {*} param0 
+ * @returns {HTMLOutputElement} The HTML output element.
+ */
+const Output = ({
+    name,
+    forAttr
+}) => {
+    return <output name={name} htmlFor={forAttr}/>
+}
 /**
  * Assists in the development of forms input blocks in forms.  It accepts 
  * parameters for setting attribute tags in the form section.  Not to be 
@@ -485,6 +499,7 @@ const Forms = {
     Email,
     Hidden,
     Input, 
+    Output,
     RichText, 
     SubmitTag, 
     TextArea 
