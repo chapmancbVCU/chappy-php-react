@@ -202,6 +202,24 @@ export const DisplayErrors = ({errors}) => {
     )
 }
 
+const Email = ({
+    label,
+    name,
+    value = '',
+    inputAttrs={},     
+    divAttrs={},
+    errors=[],
+}) => {
+    const divString = normalizeAttrs(divAttrs);
+    inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
+    const inputString = normalizeAttrs(inputAttrs);
+
+    return (
+        <div {...divString}>
+            <label c></label>
+        </div>
+    )
+}
 /**
  * Renders an error message for a particular form field.
  * @property {object} errors The error object.
@@ -276,7 +294,7 @@ export const Input = ({
 
     return (
         <div {...divString}>
-            <label className='control-label' htmlFor={id}>{label}</label>
+            <label className='form-label' htmlFor={id}>{label}</label>
             <input type={type} id={id} name={name} defaultValue={value} {...inputString} />
             <FieldErrors errors={errors} name={name} />
         </div>
@@ -329,7 +347,7 @@ export const RichText = ({
 
     return (
         <div {...divString}>
-            {label && <label className="control-label" htmlFor={id}>{label}</label>}
+            {label && <label className="form-label" htmlFor={id}>{label}</label>}
 
             <Editor
                 tinymce={tinymce}
@@ -430,6 +448,7 @@ const Forms = {
     CheckBoxRightLabel,
     CSRF, 
     DisplayErrors, 
+    Email,
     Input, 
     RichText, 
     SubmitTag, 
