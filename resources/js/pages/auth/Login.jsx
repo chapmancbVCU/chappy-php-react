@@ -9,7 +9,7 @@ import Forms, { CheckBoxLeftLabel } from "@/components/Forms";
  * @returns 
  */
 function Auth({errors, login, rememberMeChecked}) {
-
+    console.log
     return(
         <div className="row align-items-center justify-content-center">
             <div className="col-md-6 bg-light p-3">
@@ -37,8 +37,8 @@ function Auth({errors, login, rememberMeChecked}) {
                     <CheckBoxLeftLabel
                         label={"Remember Me"}
                         name={"remember_me"}
-                        checked={"on"}
-                        value={rememberMeChecked}
+                        value={"on"}
+                        checked={rememberMeChecked}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <div className="d-flex justify-content-end">
