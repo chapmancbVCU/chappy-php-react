@@ -37,7 +37,7 @@ function Auth({errors, login, rememberMeChecked}) {
                     <CheckBoxLeftLabel
                         label={"Remember Me"}
                         name={"remember_me"}
-                        checkedV={"on"}
+                        checked={"on"}
                         value={rememberMeChecked}
                         divAttrs={{className: 'form-group mb-3'}}
                     />

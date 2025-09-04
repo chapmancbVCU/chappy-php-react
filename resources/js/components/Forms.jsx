@@ -93,9 +93,9 @@ export const CheckBoxLeftLabel = ({
             <input
             type="checkbox"
             id={id}
-            name={name}           // keep brackets for arrays (e.g., "roles[]")
-            value={value}         // what the server receives when checked
-            defaultChecked={!!checked}
+            name={name}           
+            value={value}    
+            defaultChecked={!checked}
             {...inputProps}
             />
         </label>
@@ -158,9 +158,9 @@ export const CheckBoxRightLabel = ({
         <input
             type="checkbox"
             id={id}
-            name={name}           // keep brackets for arrays (e.g., "roles[]")
-            value={value}         // what the server receives when checked
-            defaultChecked={!!checked}
+            name={name}           
+            value={value}         
+            defaultChecked={!checked}
             {...inputProps}
         />
         <label className="form-label" htmlFor={id}>{label}{' '}</label>
