@@ -88,7 +88,7 @@ export const CheckBoxLeftLabel = ({
         {/* For single boolean fields, ensure "false" posts when unchecked */}
         {!isMultiple && <input type="hidden" name={name} value="0" />}
 
-        <label htmlFor={id}>
+        <label className="form-label" htmlFor={id}>
             {label}{' '}
             <input
             type="checkbox"
@@ -163,7 +163,7 @@ export const CheckBoxRightLabel = ({
             defaultChecked={!!checked}
             {...inputProps}
         />
-        <label htmlFor={id}>{label}{' '}</label>
+        <label className="form-label" htmlFor={id}>{label}{' '}</label>
         
         <FieldErrors errors={errors} name={errorKey} />
         </div>
@@ -216,7 +216,9 @@ const Email = ({
 
     return (
         <div {...divString}>
-            <label c></label>
+            <label className="form-label" htmlFor={name}>{label}</label>
+            <input type='email' id={name} value={value} {...inputString}/>
+            <FieldErrors errors={errors} name={name} />
         </div>
     )
 }
