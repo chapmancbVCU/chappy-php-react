@@ -21,6 +21,18 @@ class HomeController extends Controller {
     }
 
     public function testAction(): void {
+        if($this->request->isPost()) {
+            $this->request->csrfCheck();
+            $vars = $this->request->get();
+            // dd($vars['test1']);
+        }
+
+        $test1Var = $vars['test1'] == 'on';
+        // dd($test1Var);
+        $this->view->props = [
+            'vars' => $vars,
+            'test1Var' => $test1Var,
+        ];
         $this->view->renderJsx('home.Test');
     }
 }

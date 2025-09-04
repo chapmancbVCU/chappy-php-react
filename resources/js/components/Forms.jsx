@@ -76,7 +76,6 @@ export const CheckBoxLeftLabel = ({
 
     // Ensure unique IDs when multiple boxes share the same name
     const safeVal = String(value).replace(/\W+/g, '_');
-    console.log(safeVal)
     const id = `${formatId(name)}_${safeVal}`;
 
     const divProps = normalizeAttrs(divAttrs);
