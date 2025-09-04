@@ -38,6 +38,52 @@ export const ButtonBlock = ({label, inputAttrs, divAttrs}) => {
     )
 }
 
+export const CheckBoxLeftLabel = ({
+    label,
+    name,
+    value = '',
+    checked = false,
+    inputAttrs = {},
+    divAttrs = {},
+    errors = []
+}) => {
+    // Is it a multi-checkbox group like "roles[]"?
+    const isMultiple = name.endsWith('[]');
+
+    // Error bags usually use the base name (e.g., "roles" not "roles[]")
+    const errorKey = isMultiple ? name.slice(0, -2) : name;
+
+    // Ensure unique IDs when multiple boxes share the same name
+    const safeVal = String(value).replace(/\W+/g, '_');
+    const id = `${formatId(name)}_${safeVal}`;
+
+    const divProps = normalizeAttrs(divAttrs);
+    const inputProps = normalizeAttrs(
+        appendErrorClass(inputAttrs, errors, errorKey, 'is-invalid')
+    );
+
+    return (
+        <div {...divProps}>
+        {/* For single boolean fields, ensure "false" posts when unchecked */}
+        {!isMultiple && <input type="hidden" name={name} value="0" />}
+
+        <label htmlFor={id}>
+            {label}{' '}
+            <input
+            type="checkbox"
+            id={id}
+            name={name}           // keep brackets for arrays (e.g., "roles[]")
+            value={value}         // what the server receives when checked
+            defaultChecked={!!checked}
+            {...inputProps}
+            />
+        </label>
+
+        <FieldErrors errors={errors} name={errorKey} />
+        </div>
+    );
+};
+
 /**
  * Generates hidden component for csrf token.
  * @param {string} name The name for the csrf token. 
@@ -295,6 +341,7 @@ export const TextArea = ({
 
 const Forms = { 
     Button,
+    CheckBoxLeftLabel,
     CSRF, 
     DisplayErrors, 
     Input, 

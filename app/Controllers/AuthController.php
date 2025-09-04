@@ -32,7 +32,8 @@ class AuthController extends Controller {
 
         $this->view->props = [
             'login' => $loginModel,
-            'errors' => $loginModel->getErrorMessages()
+            'errors' => $loginModel->getErrorMessages(),
+            'rememberMeChecked' => $loginModel->getRememberMeChecked()
         ];
         $this->view->renderJsx('auth.Login');
     }

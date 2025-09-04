@@ -1,6 +1,6 @@
 import React from "react";
 import route from "@/utils/route";
-import Forms from "@/components/Forms";
+import Forms, { CheckBoxLeftLabel } from "@/components/Forms";
 
 /**
  * @property {object} errors The errors object.
@@ -8,7 +8,7 @@ import Forms from "@/components/Forms";
  * @param {InputProps} param0 
  * @returns 
  */
-function Auth({errors, login}) {
+function Auth({errors, login, rememberMeChecked}) {
 
     return(
         <div className="row align-items-center justify-content-center">
@@ -31,6 +31,14 @@ function Auth({errors, login}) {
                         name={"password"}
                         value={login.password}
                         inputAttrs={{className: 'form-control'}}
+                        divAttrs={{className: 'form-group mb-3'}}
+                    />
+
+                    <CheckBoxLeftLabel
+                        label={"Remember Me"}
+                        name={"remember_me"}
+                        checkedV={"on"}
+                        value={rememberMeChecked}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <div className="d-flex justify-content-end">
