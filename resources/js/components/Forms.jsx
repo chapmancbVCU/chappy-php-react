@@ -40,7 +40,7 @@ export const ButtonBlock = ({label, inputAttrs, divAttrs}) => {
 
 /**
  * Generates a div containing an input of type checkbox with the label to 
- * the left that is not part of a group.
+ * the left.
  * @property {string} label Sets the label for this input.
  * @property {string} name Sets the value for the name, for, and id attributes 
  * for this input.
@@ -48,7 +48,7 @@ export const ButtonBlock = ({label, inputAttrs, divAttrs}) => {
  * the value of the value attribute during form validation.  Default value 
  * is the empty string.  It can be set with values during form validation 
  * and forms used for editing records.
- * @property {checked} The value for the checked attribute.  If true 
+ * @property {checked} checked The value for the checked attribute.  If true 
  * this attribute will be set as checked="checked".  The default value is 
  * false.  It can be set with values during form validation and forms 
  * used for editing records.
@@ -105,6 +105,70 @@ export const CheckBoxLeftLabel = ({
     );
 };
 
+/**
+ * Generates a div containing an input of type checkbox with the label to 
+ * the right.
+ * @property {string} label Sets the label for this input.
+ * @property {string} name Sets the value for the name, for, and id attributes 
+ * for this input.
+ * @property {string} value The value we want to set.  We can use this to set 
+ * the value of the value attribute during form validation.  Default value 
+ * is the empty string.  It can be set with values during form validation 
+ * and forms used for editing records.
+ * @property {checked} checked The value for the checked attribute.  If true 
+ * this attribute will be set as checked="checked".  The default value is 
+ * false.  It can be set with values during form validation and forms 
+ * used for editing records.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
+ * @param {*} param0 
+ * @returns 
+ */
+export const CheckBoxRightLabel = ({
+    label,
+    name,
+    value = '',
+    checked = false,
+    inputAttrs = {},
+    divAttrs = {},
+    errors = []
+}) => {
+    // Is it a multi-checkbox group like "roles[]"?
+    const isMultiple = name.endsWith('[]');
+
+    // Error bags usually use the base name (e.g., "roles" not "roles[]")
+    const errorKey = isMultiple ? name.slice(0, -2) : name;
+
+    // Ensure unique IDs when multiple boxes share the same name
+    const safeVal = String(value).replace(/\W+/g, '_');
+    const id = `${formatId(name)}_${safeVal}`;
+
+    const divProps = normalizeAttrs(divAttrs);
+    const inputProps = normalizeAttrs(
+        appendErrorClass(inputAttrs, errors, errorKey, 'is-invalid')
+    );
+
+    return (
+        <div {...divProps}>
+        {/* For single boolean fields, ensure "false" posts when unchecked */}
+        {!isMultiple && <input type="hidden" name={name} value="0" />}
+
+        <input
+            type="checkbox"
+            id={id}
+            name={name}           // keep brackets for arrays (e.g., "roles[]")
+            value={value}         // what the server receives when checked
+            defaultChecked={!!checked}
+            {...inputProps}
+        />
+        <label htmlFor={id}>{label}{' '}</label>
+        
+        <FieldErrors errors={errors} name={errorKey} />
+        </div>
+    );
+};
 /**
  * Generates hidden component for csrf token.
  * @param {string} name The name for the csrf token. 
@@ -363,6 +427,7 @@ export const TextArea = ({
 const Forms = { 
     Button,
     CheckBoxLeftLabel,
+    CheckBoxRightLabel,
     CSRF, 
     DisplayErrors, 
     Input, 
