@@ -264,6 +264,20 @@ const FieldErrors = ({ errors = {}, name }) => {
 };
 
 /**
+ * Generates a hidden input element.
+ * @property {string} The value for the name and id attributes.
+ * @property {string|number} The value for the value attribute.
+ * @param {*} param0 
+ * @returns {HTMLInputElement} The html input element with type hidden
+ */
+const Hidden = ({
+    name,
+    value
+}) => {
+    return <input type="hidden" name={name} id={name} value={value} />
+}
+
+/**
  * Assists in the development of forms input blocks in forms.  It accepts 
  * parameters for setting attribute tags in the form section.  Not to be 
  * used for inputs of type "Submit"  For submit inputs use the submitBlock 
@@ -469,6 +483,7 @@ const Forms = {
     CSRF, 
     DisplayErrors, 
     Email,
+    Hidden,
     Input, 
     RichText, 
     SubmitTag, 
