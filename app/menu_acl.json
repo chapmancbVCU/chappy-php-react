@@ -1,4 +1,5 @@
 {
     "Home" : "home",
-    "Admin" : "admindashboard/index"
+    "Admin" : "admindashboard/index",
+    "Test" : "home/test"
 }

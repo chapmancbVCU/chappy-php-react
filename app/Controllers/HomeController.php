@@ -19,4 +19,8 @@ class HomeController extends Controller {
         $props = ['user' => $user ?? 'Guest'];
         $this->view->renderJSX('home.Index', $props);
     }
+
+    public function testAction(): void {
+        $this->view->renderJsx('home.Test');
+    }
 }

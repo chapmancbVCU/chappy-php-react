@@ -76,6 +76,7 @@ export const CheckBoxLeftLabel = ({
 
     // Ensure unique IDs when multiple boxes share the same name
     const safeVal = String(value).replace(/\W+/g, '_');
+    console.log(safeVal)
     const id = `${formatId(name)}_${safeVal}`;
 
     const divProps = normalizeAttrs(divAttrs);
@@ -95,7 +96,7 @@ export const CheckBoxLeftLabel = ({
             id={id}
             name={name}           
             value={value}    
-            defaultChecked={!checked}
+            defaultChecked={checked}
             {...inputProps}
             />
         </label>
@@ -278,20 +279,6 @@ const Hidden = ({
 }
 
 /**
- * Generates an HTML output element.
- * @property {string} name Sets the value for the name attributes for this 
- * input.
- * @property {string} forAttr Sets the value for the for attribute.
- * @param {*} param0 
- * @returns {HTMLOutputElement} The HTML output element.
- */
-const Output = ({
-    name,
-    forAttr
-}) => {
-    return <output name={name} htmlFor={forAttr}/>
-}
-/**
  * Assists in the development of forms input blocks in forms.  It accepts 
  * parameters for setting attribute tags in the form section.  Not to be 
  * used for inputs of type "Submit"  For submit inputs use the submitBlock 
@@ -350,6 +337,32 @@ export const Input = ({
 }
 
 /**
+ * Generates an HTML output element.
+ * @property {string} name Sets the value for the name attributes for this 
+ * input.
+ * @property {string} forAttr Sets the value for the for attribute.
+ * @param {*} param0 
+ * @returns {HTMLOutputElement} The HTML output element.
+ */
+const Output = ({
+    name,
+    forAttr
+}) => {
+    return <output name={name} htmlFor={forAttr}/>
+}
+
+const Radio = ({
+    label,
+    id,
+    name,
+    value,
+    checked = false,
+    inputAttrs={}
+}) => {
+
+}
+
+/**
  * Rich text editor field (TinyMCE) that posts HTML via a hidden input.
  *
  * Behavior:
@@ -375,7 +388,7 @@ export const Input = ({
  * @param {RichTextProps} props
  * @returns {JSX.Element}
  */
-export const RichText = ({
+const RichText = ({
     label,
     name,
     value = '',
