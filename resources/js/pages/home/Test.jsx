@@ -1,15 +1,19 @@
 import React from "react";
 import Forms from "@/components/Forms";
-export default function Test({vars, test1Var, test2Var, test1Checked, test2Checked}) {
+export default function Test({vars, test1Var, test2Var}) {
     console.log("Vars");
     console.log(vars)
     console.log("Test1Var");
-    console.log(test1Checked)
+    console.log(test1Var)
     console.log("Test2Var");
-    console.log(test2Checked)
+    console.log(test2Var)
+
     return (
         <>
             <h1>Test</h1>
+            {vars &&
+                <h2>Button for {vars} was selected</h2>
+            }
             <form method='post' action=''>
                 <Forms.CSRF />
                 <Forms.Radio 
@@ -17,18 +21,21 @@ export default function Test({vars, test1Var, test2Var, test1Checked, test2Check
                     id={"html"}
                     name={"fav_language"}
                     value={"HTML"}
-                    checked={test1Checked}
-                    inputAttrs={{className: 'form-group mr-1'}}
+                    checked={test1Var}
+                    inputAttrs={{className: 'form-group me-1'}}
                 />
                 <Forms.Radio 
                     label={"CSS"}
                     id={"css"}
                     name={"fav_language"}
                     value={"CSS"}
-                    checked={test1Checked}
-                    inputAttrs={{className: 'form-group mr-1'}}
+                    checked={test2Var}
+                    inputAttrs={{className: 'form-group me-1'}}
                 />
-                <Forms.SubmitTag label={"submit"} inputAttrs={{className: 'btn btn-primary'}}/>
+                <div className="d-flex justify-content-center">
+
+                    <Forms.SubmitTag label={"submit"} inputAttrs={{className: 'btn btn-primary'}}/>
+                </div>
             </form>
         </>
     )

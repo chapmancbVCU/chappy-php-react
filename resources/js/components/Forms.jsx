@@ -362,7 +362,7 @@ const Radio = ({
     return (
         <>
             <input type="radio" id={id} name={name} value={value} defaultChecked={checked} {...inputString}/>
-            <label className="form-label" htmlFor={id}>{label}</label>
+            <label className="form-label me-3" htmlFor={id}>{label}</label>
         </>
     )
 }
