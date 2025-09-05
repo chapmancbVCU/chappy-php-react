@@ -358,7 +358,13 @@ const Radio = ({
     checked = false,
     inputAttrs={}
 }) => {
-
+    const inputString = normalizeAttrs(inputAttrs);
+    return (
+        <>
+            <input type="radio" id={id} name={name} value={value} defaultChecked={checked} {...inputString}/>
+            <label className="form-label" htmlFor={id}>{label}</label>
+        </>
+    )
 }
 
 /**
@@ -512,6 +518,7 @@ const Forms = {
     Hidden,
     Input, 
     Output,
+    Radio,
     RichText, 
     SubmitTag, 
     TextArea 
