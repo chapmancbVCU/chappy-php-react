@@ -504,6 +504,45 @@ export const SubmitTag = ({label, inputAttrs={}}) => {
 }
 
 /**
+ * Renders an HTML div element that surrounds an input of type tel.
+ * @property {string} label Sets the label for this input.
+ * @property {string} name Sets the value for the name, for, and id attributes 
+ * for this input.
+ * @property {string|number} value The value we want to set.  We can use this to set 
+ * the value of the value attribute during form validation.  Default value 
+ * is the empty string.  It can be set with values during form validation 
+ * and forms used for editing records.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
+ * @property {Record<string, string[]>|string[]} [errors=[]]The errors object.  
+ * Default value is an empty object.
+ * @param {InputProps} param0 
+ * @returns {HTMLDivElement}
+ */
+export const Tel = ({
+    label,
+    name,
+    value='',
+    inputAttrs={},
+    divAttrs={},
+    errors=[]
+}) => {
+    const divString = normalizeAttrs(divAttrs);
+    inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
+    const inputString = normalizeAttrs(inputAttrs);
+
+    return (
+        <div {...divString}>
+            <label class="form-label" htmlFor={name}>{label}</label>
+            <input type="tel" id={name} name={name} value={value} {...inputString} />
+            <FieldErrors errors={errors} name={name} />
+        </div>
+    );
+}
+
+/**
  * Assists in the development of textarea in forms.  It accepts parameters 
  * for setting  attribute tags in the form section.
  *
@@ -561,6 +600,7 @@ const Forms = {
     RichText, 
     SubmitBlock,
     SubmitTag, 
+    Tel,
     TextArea 
 };
 export default Forms;
