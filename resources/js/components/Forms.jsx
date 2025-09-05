@@ -48,7 +48,7 @@ export const ButtonBlock = ({label, inputAttrs, divAttrs}) => {
  * the value of the value attribute during form validation.  Default value 
  * is the empty string.  It can be set with values during form validation 
  * and forms used for editing records.
- * @property {checked} checked The value for the checked attribute.  If true 
+ * @property {bool} checked The value for the checked attribute.  If true 
  * this attribute will be set as checked="checked".  The default value is 
  * false.  It can be set with values during form validation and forms 
  * used for editing records.
@@ -115,7 +115,7 @@ export const CheckBoxLeftLabel = ({
  * the value of the value attribute during form validation.  Default value 
  * is the empty string.  It can be set with values during form validation 
  * and forms used for editing records.
- * @property {checked} checked The value for the checked attribute.  If true 
+ * @property {bool} checked The value for the checked attribute.  If true 
  * this attribute will be set as checked="checked".  The default value is 
  * false.  It can be set with values during form validation and forms 
  * used for editing records.
@@ -350,6 +350,22 @@ const Output = ({
     return <output name={name} htmlFor={forAttr}/>
 }
 
+/**
+ * @property {string} label Sets the label for this input.
+ * @property {string} id The id attribute for the radio input button.
+ * @property {string} name Sets the value for the name attribute.
+ * @property {string} value The value we want to set.  We can use this to set 
+ * the value of the value attribute during form validation.  It can be 
+ * set with values during form validation and forms used for editing records.
+ * @property {bool} checked The value for the checked attribute.  If true 
+ * this attribute will be set as checked="checked".  The default value is 
+ * false.  It can be set with values during form validation and forms 
+ * used for editing records.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @param {InputProps} param0 
+ * @returns {JSX.Element} The radio input and its label.
+ */
 const Radio = ({
     label,
     id,
