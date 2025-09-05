@@ -351,6 +351,8 @@ const Output = ({
 }
 
 /**
+ * Creates an input element of type radio with an accompanying label 
+ * element.  Compatible with radio button groups.
  * @property {string} label Sets the label for this input.
  * @property {string} id The id attribute for the radio input button.
  * @property {string} name Sets the value for the name attribute.
@@ -463,6 +465,27 @@ const RichText = ({
 };
 
 /**
+ * @property {string} label Sets the value of the text describing the 
+ * button.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
+ * @param {InputProps} param0 
+ * @returns A surrounding div and the input element of type submit.
+ */
+export const SubmitBlock = ({label, inputAttrs={}, divAttrs={}}) => {
+    const divString = normalizeAttrs(divAttrs);
+    const inputString = normalizeAttrs(inputAttrs);
+
+    return (
+        <div {...divString}>
+            <input type="submit" value={label} {...inputString} />
+        </div>
+    );
+}
+
+/**
  * Create a input element of type submit.
  *
  * @typedef {Object} SubmitTagProps
@@ -536,6 +559,7 @@ const Forms = {
     Output,
     Radio,
     RichText, 
+    SubmitBlock,
     SubmitTag, 
     TextArea 
 };
