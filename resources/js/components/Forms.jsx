@@ -235,7 +235,7 @@ const Email = ({
     return (
         <div {...divString}>
             <label className="form-label" htmlFor={name}>{label}</label>
-            <input type='email' id={name} value={value} {...inputString}/>
+            <input type='email' id={name} defaultValue={value} {...inputString}/>
             <FieldErrors errors={errors} name={name} />
         </div>
     )
@@ -274,7 +274,7 @@ const Hidden = ({
     name,
     value
 }) => {
-    return <input type="hidden" name={name} id={name} value={value} />
+    return <input type="hidden" name={name} id={name} defaultValue={value} />
 }
 
 /**
@@ -379,7 +379,7 @@ const Radio = ({
     const inputString = normalizeAttrs(inputAttrs);
     return (
         <>
-            <input type="radio" id={id} name={name} value={value} defaultChecked={checked} {...inputString}/>
+            <input type="radio" id={id} name={name} defaultValue={value} defaultChecked={checked} {...inputString}/>
             <label className="form-label me-3" htmlFor={id}>{label}</label>
         </>
     )
@@ -535,8 +535,8 @@ export const Tel = ({
 
     return (
         <div {...divString}>
-            <label class="form-label" htmlFor={name}>{label}</label>
-            <input type="tel" id={name} name={name} value={value} {...inputString} />
+            <label className="form-label" htmlFor={name}>{label}</label>
+            <input type="tel" id={name} name={name} defaultValue={value} {...inputString} />
             <FieldErrors errors={errors} name={name} />
         </div>
     );

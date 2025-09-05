@@ -23,15 +23,17 @@ class HomeController extends Controller {
     public function testAction(): void {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            $vars = $this->request->get('fav_language');
-            $test1Var = $vars == 'HTML' ? true : false;
-            $test2Var = $vars == 'CSS' ? true : false; 
+            $vars = $this->request->get();
+            $test1Var = $vars['fav_language'] == 'HTML' ? true : false;
+            // dd($vars);
+            $test2Var = $vars['fav_language'] == 'CSS' ? true : false; 
         }
 
         $this->view->props = [
             'vars' => $vars,
             'test1Var' => $test1Var,
             'test2Var' => $test2Var,
+            'cellNumber' => $vars['cell']
         ];
         $this->view->renderJsx('home.Test');
     }
