@@ -19,7 +19,6 @@ function Edit({user, errors, profileImages}) {
                         value={user.fname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        // errors={errors}
                     />
                     <Forms.Input 
                         type={"text"} 
@@ -28,7 +27,6 @@ function Edit({user, errors, profileImages}) {
                         value={user.lname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        // errors={errors}
                     />
                     <Forms.Input 
                         type={"email"} 
@@ -37,7 +35,6 @@ function Edit({user, errors, profileImages}) {
                         value={user.email}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
-                        // errors={errors}
                     />
                     <Forms.RichText
                         label="Description"
@@ -45,7 +42,6 @@ function Edit({user, errors, profileImages}) {
                         value={user.description}
                         inputAttrs={{ placeholder: 'Describe yourself here...' }}
                         divAttrs={{ className: 'form-group mb-3' }}
-                        // errors={errors}
                     />
 
                     <Forms.Input 
