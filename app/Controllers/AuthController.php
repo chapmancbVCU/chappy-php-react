@@ -90,9 +90,11 @@ class AuthController extends Controller {
             }
         }
 
-        $this->view->user = $user;
-        $this->view->displayErrors = $user->getErrorMessages();
-        $this->view->render('auth.register');
+        $this->view->props = [
+            'user' => $user,
+            'errors' => $user->getErrorMessages()
+        ];
+        $this->view->renderJsx('auth.Register');
     }
 
     /**
