@@ -11,7 +11,7 @@ export default function Test({vars, test1Var, test2Var, cellNumber}) {
     return (
         <>
             <h1>Test</h1>
-            {vars.fav_language &&
+            {vars &&
                 <h2>Button for {vars.fav_language} was selected</h2>
             }
             <form method='post' action=''>
