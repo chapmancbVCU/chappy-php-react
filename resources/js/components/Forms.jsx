@@ -464,12 +464,41 @@ const RichText = ({
     );
 };
 
-export const Select = ({}) => {
+export const Select = ({
+    label,
+    name,
+    value,
+    fieldName="",
+    options,
+    inputAttrs={},
+    divAttrs={},
+    errors=[]
+}) => {
+    const id = formatId(name);
+    const divString = normalizeAttrs(divAttrs);
+    inputAttrs = appendErrorClass(inputAttrs, errors, name, 'is-invalid');
+    const inputString = normalizeAttrs(inputAttrs);
 
+    return (
+        <div {...divString}>
+            <label className='form-label' htmlFor={id}>{label}</label>
+            <select id={id} name={name} defaultValue={value} {...inputString}>
+                {options && options.map((option, index) => (
+                    <SelectOptions 
+                        key={String(option[fieldName] ?? index)} 
+                        option={option} 
+                        fieldName={fieldName} 
+                    />
+                ))}
+            </select>
+            <FieldErrors errors={errors} name={name} />
+        </div>
+    );
 }
 
-const SelectOptions = ({}) => {
-
+const SelectOptions = ({option, fieldName}) => {
+    const val = String(option[fieldName]);
+    return <option value={val}>{String(option[fieldName])}</option>;
 }
 
 /**

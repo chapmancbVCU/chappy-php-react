@@ -30,6 +30,7 @@ class HomeController extends Controller {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $vars = $this->request->get();
+            $selected = $vars['options'];
             $test1Var = $vars['fav_language'] == 'HTML' ? true : false;
             $test2Var = $vars['fav_language'] == 'CSS' ? true : false; 
         }
@@ -39,7 +40,8 @@ class HomeController extends Controller {
             'test1Var' => $test1Var,
             'test2Var' => $test2Var,
             'cellNumber' => $vars['cell'],
-            'options' => $options
+            'options' => $options,
+            'selectedVal' => $selected
         ];
         $this->view->renderJsx('home.Test');
     }
