@@ -1,5 +1,7 @@
 <?php
 namespace App\Controllers;
+
+use App\Models\Options;
 use Core\Controller;
 use Core\Services\AuthService;
 use Core\DB;
@@ -27,10 +29,8 @@ class HomeController extends Controller {
         // $db->insert('options', ['name' => 'option2']);
         // $db->insert('options', ['name' => 'option3']);
         // $db->insert('options', ['name' => 'option4']);
-        $options = [
-
-        ];
-
+        $options = Options::find();
+        // dd($options);
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $vars = $this->request->get();
@@ -42,7 +42,8 @@ class HomeController extends Controller {
             'vars' => $vars,
             'test1Var' => $test1Var,
             'test2Var' => $test2Var,
-            'cellNumber' => $vars['cell']
+            'cellNumber' => $vars['cell'],
+            'options' => $options
         ];
         $this->view->renderJsx('home.Test');
     }

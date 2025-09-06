@@ -1,6 +1,6 @@
 import React from "react";
 import Forms from "@/components/Forms";
-export default function Test({vars, test1Var, test2Var, cellNumber}) {
+export default function Test({vars, test1Var, test2Var, cellNumber, options}) {
     console.log("Vars");
     console.log(vars)
     console.log("Test1Var");
