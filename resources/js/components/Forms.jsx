@@ -235,7 +235,7 @@ const Email = ({
     return (
         <div {...divString}>
             <label className="form-label" htmlFor={name}>{label}</label>
-            <input type='email' id={name} defaultValue={value} {...inputString}/>
+            <input type='email' id={name} name={name} defaultValue={value} {...inputString}/>
             <FieldErrors errors={errors} name={name} />
         </div>
     )
@@ -464,6 +464,14 @@ const RichText = ({
     );
 };
 
+export const Select = ({}) => {
+
+}
+
+const SelectOptions = ({}) => {
+
+}
+
 /**
  * @property {string} label Sets the value of the text describing the 
  * button.
@@ -598,6 +606,7 @@ const Forms = {
     Output,
     Radio,
     RichText, 
+    Select,
     SubmitBlock,
     SubmitTag, 
     Tel,
