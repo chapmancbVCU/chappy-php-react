@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use Core\Controller;
 use Core\Services\AuthService;
+use Core\DB;
 
 /**
  * Implements support for our Home controller.  Functions found in this class 
@@ -21,11 +22,19 @@ class HomeController extends Controller {
     }
 
     public function testAction(): void {
+        // $db = DB::getInstance();
+        // $db->insert('options', ['name' => 'option1']);
+        // $db->insert('options', ['name' => 'option2']);
+        // $db->insert('options', ['name' => 'option3']);
+        // $db->insert('options', ['name' => 'option4']);
+        $options = [
+
+        ];
+
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $vars = $this->request->get();
             $test1Var = $vars['fav_language'] == 'HTML' ? true : false;
-            // dd($vars);
             $test2Var = $vars['fav_language'] == 'CSS' ? true : false; 
         }
 
