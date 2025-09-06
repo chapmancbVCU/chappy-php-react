@@ -464,12 +464,33 @@ const RichText = ({
     );
 };
 
+/**
+ * @property {string} label Sets the label for this input.
+ * @property {string}  name Sets the value for the name, for, and id attributes 
+ * for this input.
+ * @property {string} value The value we want to set.  We can use this to set 
+ * the value of the value attribute during form validation.  Default value 
+ * is the empty string.  It can be set with values during form validation 
+ * and forms used for editing records.
+ * @property {string} fieldName The name of the field in the model to use.
+ * @property {array} The list of options we will use to populate the 
+ * select option dropdown.  The default value is an empty array.
+ * @property {object} inputAttrs The values used to set the class and other 
+ * attributes of the input string.  The default value is an empty object.
+ * @property {object} outputAttrs The values used to set the class and other 
+ * attributes of the surrounding div.  The default value is an empty object.
+ * @property {Record<string,string[]>|string[]} [errors=[]] The errors object.  
+ * Default value is an empty object.
+ * 
+ * @param {InputProps} param0 
+ * @returns 
+ */
 export const Select = ({
     label,
     name,
     value,
     fieldName="",
-    options,
+    options=[],
     inputAttrs={},
     divAttrs={},
     errors=[]
@@ -496,6 +517,15 @@ export const Select = ({
     );
 }
 
+/**
+ * Generates options for select.
+ * @property {object} option An instance of model used to populate a select 
+ * option
+ * @property {string} fieldName The name of the field in the model to use.
+ * @param {Input} param0 
+ * @returns {HTMLOptionElement} An HTML element for select with correct 
+ * value displayed.
+ */
 const SelectOptions = ({option, fieldName}) => {
     const val = String(option[fieldName]);
     return <option value={val}>{String(option[fieldName])}</option>;
