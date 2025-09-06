@@ -38,12 +38,11 @@ function Edit({user, errors, profileImages}) {
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
-                    <Forms.Input 
-                        type={"email"} 
+                    <Forms.Email 
                         label={"Email"} 
                         name={"email"}
                         value={user.email}
-                        inputAttrs={{className: 'form-control input-sm'}}
+                        inputAttrs={{className: 'form-control input-sm', placeholder: 'joe@example.com'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.RichText
