@@ -22,10 +22,10 @@ class Migration1757177494 extends Migration {
         });
 
         // $db = DB::getInstance();
-        // $db->insert('options', ['option1']);
-        // $db->insert('options', ['option2']);
-        // $db->insert('options', ['option3']);
-        // $db->insert('options', ['option4']);
+        // $db->insert('options', ['name' => 'option1']);
+        // $db->insert('options', ['name' => 'option2']);
+        // $db->insert('options', ['name' => 'option3']);
+        // $db->insert('options', ['name' => 'option4']);
     }
 
     /**

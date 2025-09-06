@@ -24,11 +24,7 @@ class HomeController extends Controller {
     }
 
     public function testAction(): void {
-        // $db = DB::getInstance();
-        // $db->insert('options', ['name' => 'option1']);
-        // $db->insert('options', ['name' => 'option2']);
-        // $db->insert('options', ['name' => 'option3']);
-        // $db->insert('options', ['name' => 'option4']);
+        
         $options = Options::find();
         // dd($options);
         if($this->request->isPost()) {
