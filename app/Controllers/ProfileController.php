@@ -103,8 +103,10 @@ class ProfileController extends Controller {
 
         // PW change mode off and final page setup.
         $user->setChangePassword(false);
-        $this->view->displayErrors = $user->getErrorMessages();
-        $this->view->user = $user;
-        $this->view->render('profile.update_password');
+        $props = [
+            'user' => $user,
+            'errors' => $user->getErrorMessages()
+        ];
+        $this->view->renderJsx('profile.UpdatePassword', $props);
     }
 }
