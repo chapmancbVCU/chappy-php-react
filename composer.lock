@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a598f67da00f6e4adf76a258d1c44a39",
+    "content-hash": "342fbbb12b32510dd3c22f3c840e870c",
     "packages": [
         {
             "name": "brick/math",
@@ -141,7 +141,7 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
-                "reference": "e4c6364acb241850d1bcaa5a5b57aed589898ae0"
+                "reference": "d87e87104b000a1d973af3366af697d6b5a2f85b"
             },
             "require": {
                 "composer": "*",

@@ -1,5 +1,5 @@
 import React from "react";
-import Forms from "@/components/Forms";
+import Forms from "@chappy/components/Forms";
 export default function Test({vars, test1Var, test2Var, cellNumber, options, selectedVal}) {
     console.log("**********************************");
     console.log("Vars");

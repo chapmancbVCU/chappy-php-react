@@ -1,6 +1,6 @@
 import React from "react";
-import SafeHtml from '@/components/SafeHtml.jsx';
-import route from "@/utils/route";
+import SafeHtml from '@chappy/components/SafeHtml.jsx';
+import route from "@chappy/utils/route";
 
 /**
  * Renders index view for profile controller.

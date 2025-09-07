@@ -1,5 +1,5 @@
 import React from "react";
-import Forms from "@/components/Forms";
+import Forms from "@chappy/components/Forms";
 
 /**
  * Generates the register view component
@@ -12,9 +12,9 @@ function Register({user, errors}) {
     return (
         <div className="row align-items-center justify-content-center">
             <div className="col-md-6 bg-light p-3">
-                <h3 class="text-center">Register Here!</h3>
+                <h3 className="text-center">Register Here!</h3>
                 <hr />
-                <form action="" className="form" method="post" enctype="multipart/form-data">
+                <form action="" className="form" method="post" encType="multipart/form-data">
                     <Forms.CSRF />
                     <Forms.DisplayErrors errors={errors}/>
                     <Forms.Input 

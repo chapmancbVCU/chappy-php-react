@@ -11,8 +11,7 @@
   ],
   "require": {
     "php": ">=8.3",
-      "chappy-php/chappy-php-framework": "dev-main",
-    "tinymce/tinymce": "^7.9"
+      "chappy-php/chappy-php-framework": "dev-main"
   },
   "autoload": {
     "psr-4": {

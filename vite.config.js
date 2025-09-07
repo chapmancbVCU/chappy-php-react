@@ -21,13 +21,18 @@ export default defineConfig({
         },
         cors: true,
         fs: {
-            allow: ['..', 'node_modules'],
+            allow: [
+                '..', 
+                'node_modules',
+                path.resolve(__dirname, 'vendor/chappy-php/chappy-php-framework'),
+            ]
         },
     },
     resolve: {
         alias: {
             tinymce: path.resolve(__dirname, 'node_modules/tinymce'),
             '@': path.resolve(__dirname, 'resources/js'), // ✅ shortcut for imports
+            '@chappy' : path.resolve(__dirname, 'vendor/chappy-php/chappy-php-framework/src/React'),
             '@css': path.resolve(__dirname, 'resources/css'),
         }
     },

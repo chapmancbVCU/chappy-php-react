@@ -1,6 +1,6 @@
 import React from "react";
-import route from "@/utils/route";
-import Forms, { CheckBoxLeftLabel } from "@/components/Forms";
+import route from "@chappy/utils/route";
+import Forms, { CheckBoxLeftLabel } from "@chappy/components/Forms";
 
 /**
  * @property {object} errors The errors object.
