@@ -1,7 +1,7 @@
 import React from "react";
 
 import Forms from "@chappy/components/Forms";
-import route from "@/utils/route";
+import route from "@chappy/utils/route";
 import ProfileImageSorter from '@/components/ProfileImageSorter';
 
 /**
