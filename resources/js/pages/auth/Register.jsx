@@ -1,6 +1,6 @@
 import React from "react";
 import Forms from "@chappy/components/Forms";
-
+import {PasswordComplexityRequirements} from '@chappy/components/PasswordComplexityRequirements'
 /**
  * Generates the register view component
  * @property {object} user The users model object.
@@ -63,6 +63,7 @@ function Register({user, errors}) {
                         inputAttrs={{className: 'form-control', accept: 'image/gif image/jpeg image/png'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
+                    <PasswordComplexityRequirements />
                     <Forms.Input 
                         type={"password"}
                         label={"Password"}
