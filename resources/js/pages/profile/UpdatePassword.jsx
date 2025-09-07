@@ -1,5 +1,5 @@
 import React from "react"
-function UpdatePassword() {
+function UpdatePassword({user, errors}) {
 
     return (
         <>
