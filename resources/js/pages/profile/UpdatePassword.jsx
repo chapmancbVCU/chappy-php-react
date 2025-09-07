@@ -4,9 +4,16 @@ import {PasswordComplexityRequirements} from '@chappy/components/PasswordComplex
 function UpdatePassword({user, errors}) {
 
     return (
-        <>
-        
-        </>
+        <div className="row align-items-center justify-content-center">
+            <div className="col-md-6 bg-light p-3">
+                <h1 className="text-center">Change Password for {user.username}</h1>
+                <hr />
+                <form className="form" action="" method="post">
+                    <Forms.CSRF />
+                    <Forms.DisplayErrors errors={errors}/>
+                </form>
+            </div>
+        </div>
     );
 }        
 export default UpdatePassword;
