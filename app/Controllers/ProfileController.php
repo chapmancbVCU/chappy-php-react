@@ -107,6 +107,7 @@ class ProfileController extends Controller {
             'user' => $user,
             'errors' => $user->getErrorMessages()
         ];
+        $this->view->setSiteTitle("Change Password for ".$user->username);
         $this->view->renderJsx('profile.UpdatePassword', $props);
     }
 }
