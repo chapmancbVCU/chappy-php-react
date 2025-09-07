@@ -8,6 +8,7 @@ function UpdatePassword({user, errors}) {
             <div className="col-md-6 bg-light p-3">
                 <h1 className="text-center">Change Password for {user.username}</h1>
                 <hr />
+                <PasswordComplexityRequirements />
                 <form className="form" action="" method="post">
                     <Forms.CSRF />
                     <Forms.DisplayErrors errors={errors}/>
