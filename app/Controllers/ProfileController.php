@@ -65,7 +65,7 @@ class ProfileController extends Controller {
         $this->view->setSiteTitle("Profile Details for {$user->username}");
         $this->view->props = [
             'user' => $user, 
-            'profileImage' => asset($profileImages[0]->url)
+            'profileImage' => $profileImages[0]
         ];
         $this->view->renderJSX('profile.Index');
     }

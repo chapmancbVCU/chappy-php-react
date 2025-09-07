@@ -1,5 +1,5 @@
 import React from "react";
-
+import asset from '@chappy/utils/asset'
 /**
  * The home page.
  * @property {object} user The currently logged in user.
@@ -14,7 +14,7 @@ export default function Index({ user }) {
         <h1 className="display-4">Hello, {username} 👋</h1>
         <h1 className="display-4">Welcome to</h1>
         <div className="col-12 mx-auto text-center">
-          <img className="w-50" src="public/logo.png" alt="Framework Logo" />
+          <img className="w-50" src={asset("public/logo.png")} alt="Framework Logo" />
         </div>
         <p className="lead my-3">This view is powered by React + Vite.</p>
         <p className="lead my-3">

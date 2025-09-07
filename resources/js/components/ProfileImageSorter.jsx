@@ -3,7 +3,7 @@ import $ from 'jquery';
 import 'jquery-ui-dist/jquery-ui.css'; // styles only (static import)
 import { getCsrf } from '@chappy/utils/csrf';
 import '@css/profileImage.css';
-
+import asset from '@chappy/utils/asset'
 /**
  * Displays and handles deletion of images.
  * @property {object} initialImages The initial collection of images.
@@ -83,7 +83,7 @@ export default function ProfileImageSorter({
                     <i className="fa fa-times" />
                     </button>
                     <div className={`edit-image-wrapper ${img.sort === 0 ? 'current-profile-img' : ''}`} data-id={img.id}>
-                    <img src={import.meta.env.VITE_APP_DOMAIN + img.url} alt="" />
+                    <img src={asset(img.url)} alt="" />
                     </div>
                 </div>
                 ))}

@@ -1,5 +1,6 @@
 import React from "react";
 import SafeHtml from '@chappy/components/SafeHtml.jsx';
+import asset from '@chappy/utils/asset'
 import route from "@chappy/utils/route";
 
 /**
@@ -14,7 +15,7 @@ function Index({ user, profileImage }) {
             <h1 className="text-center">Profile Details for {user.username}</h1>
             <div className="col align-items-center justify-content-center mx-auto my-3 w-50">
                 {profileImage && (
-                    <img src={profileImage}
+                    <img src={asset(profileImage.url)}
                         className="img-thumbnail mx-auto my-5 d-block w-50 rounded border border-primary shadow-lg"
                         loading="lazy"
                     />
