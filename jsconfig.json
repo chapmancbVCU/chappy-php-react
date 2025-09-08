@@ -3,11 +3,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["resources/js/*"],
-      "@css/*": ["resources/css/*"]
-      // If using app/resources:
-      // "@/*": ["app/resources/js/*"],
-      // "@css/*": ["app/resources/css/*"]
-    }
+      "@css/*": ["resources/css/*"],
+      "@chappy/*": ["vendor/chappy-php/chappy-php-framework/src/React/*"]
+    },
   },
   "exclude": ["node_modules", "public/build"]
 }
