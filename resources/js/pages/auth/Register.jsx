@@ -18,32 +18,32 @@ function Register({user, errors}) {
                     <Forms.CSRF />
                     <Forms.DisplayErrors errors={errors}/>
                     <Forms.Input 
-                        type={"text"}
-                        label={"User name"}
-                        name={"username"}
+                        type="text"
+                        label="User name"
+                        name="username"
                         value={user.username}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.Input 
-                        type={"text"} 
-                        label={"First Name"} 
-                        name={"fname"}
+                        type="text"
+                        label="First Name"
+                        name="fname"
                         value={user.fname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.Input 
-                        type={"text"} 
-                        label={"Last Name"} 
-                        name={"lname"}
+                        type="text"
+                        label="Last Name"
+                        name="lname"
                         value={user.lname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.Email 
-                        label={"Email"} 
-                        name={"email"}
+                        label="Email"
+                        name="email"
                         value={user.email}
                         inputAttrs={{className: 'form-control input-sm', placeholder: 'joe@example.com'}}
                         divAttrs={{className: 'form-group mb-3'}}
@@ -56,32 +56,32 @@ function Register({user, errors}) {
                         divAttrs={{ className: 'form-group mb-3' }}
                     />
                     <Forms.Input 
-                        type={"file"}
-                        label={"Upload Profile Image (Optional"}
-                        name={"profileImage"}
-                        value={""}
+                        type="file"
+                        label="Upload Profile Image (Optional"
+                        name="profileImage"
+                        value=""
                         inputAttrs={{className: 'form-control', accept: 'image/gif image/jpeg image/png'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <PasswordComplexityRequirements />
                     <Forms.Input 
-                        type={"password"}
-                        label={"Password"}
-                        name={"password"}
+                        type="password"
+                        label="Password"
+                        name="password"
                         value={user.password}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.Input 
-                        type={"password"}
-                        label={"Confirm Password"}
-                        name={"confirm"}
+                        type="password"
+                        label="Confirm Password"
+                        name="confirm"
                         value={user.confirm}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.SubmitBlock
-                        label={"Register"}
+                        label="Register"
                         inputAttrs={{className: 'btn btn-large btn-primary'}}
                         divAttrs={{className: 'text-end'}}
                     />

@@ -18,26 +18,26 @@ function Auth({errors, login, rememberMeChecked}) {
                     <Forms.CSRF />
                     <Forms.DisplayErrors errors={errors}/>
                     <Forms.Input 
-                        type={"text"}
-                        label={"Username"}
-                        name={"username"}
+                        type="text"
+                        label="Username"
+                        name="username"
                         value={login.username}
                         inputAttrs={{className: 'form-control'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.Input 
-                        type={"password"}
-                        label={"Password"}
-                        name={"password"}
+                        type="password"
+                        label="Password"
+                        name="password"
                         value={login.password}
                         inputAttrs={{className: 'form-control'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
 
                     <CheckBoxLeftLabel
-                        label={"Remember Me"}
-                        name={"remember_me"}
-                        value={"on"}
+                        label="Remember Me"
+                        name="remember_me"
+                        value="on"
                         checked={rememberMeChecked}
                         divAttrs={{className: 'form-group mb-3'}}
                     />

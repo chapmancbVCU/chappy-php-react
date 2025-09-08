@@ -23,24 +23,24 @@ function Edit({user, errors, profileImages}) {
                     <Forms.CSRF />
                     <Forms.DisplayErrors errors={errors}/>
                     <Forms.Input 
-                        type={"text"} 
-                        label={"First Name"} 
-                        name={"fname"}
+                        type="text"
+                        label="First Name"
+                        name="fname"
                         value={user.fname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.Input 
-                        type={"text"} 
-                        label={"Last Name"} 
-                        name={"lname"}
+                        type="text"
+                        label="Last Name"
+                        name="lname"
                         value={user.lname}
                         inputAttrs={{className: 'form-control input-sm'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
                     <Forms.Email 
-                        label={"Email"} 
-                        name={"email"}
+                        label="Email"
+                        name="email"
                         value={user.email}
                         inputAttrs={{className: 'form-control input-sm', placeholder: 'joe@example.com'}}
                         divAttrs={{className: 'form-group mb-3'}}
@@ -54,10 +54,10 @@ function Edit({user, errors, profileImages}) {
                     />
 
                     <Forms.Input 
-                        type={"file"}
-                        label={"Upload Profile Image (Optional"}
-                        name={"profileImage"}
-                        value={""}
+                        type="file"
+                        label="Upload Profile Image (Optional"
+                        name="profileImage"
+                        value=""
                         inputAttrs={{className: 'form-control', accept: 'image/gif image/jpeg image/png'}}
                         divAttrs={{className: 'form-group mb-3'}}
                     />
