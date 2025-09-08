@@ -55,7 +55,7 @@ function Edit({user, errors, profileImages}) {
 
                     <Forms.Input 
                         type="file"
-                        label="Upload Profile Image (Optional"
+                        label="Upload Profile Image (Optional)"
                         name="profileImage"
                         value=""
                         inputAttrs={{className: 'form-control', accept: 'image/gif image/jpeg image/png'}}
