@@ -1,5 +1,6 @@
 import React from "react";
 import Forms from "@chappy/components/Forms";
+import WeatherCard from "@/components/WeatherCard";
 export default function Test({vars, test1Var, test2Var, cellNumber, options, selectedVal}) {
     console.log("**********************************");
     console.log("Vars");
@@ -53,6 +54,8 @@ export default function Test({vars, test1Var, test2Var, cellNumber, options, sel
                     <Forms.SubmitTag label={"submit"} inputAttrs={{className: 'btn btn-primary'}}/>
                 </div>
             </form>
+
+            <WeatherCard />
         </>
     )
 }
