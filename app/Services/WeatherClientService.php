@@ -35,4 +35,51 @@ class WeatherClientService {
             ['lat' => $lat, 'lon' => 'lon', 'units' => $units]
         );
     }
+
+    private function get(string $path, array $params): array {
+        $params['appid'] = $this->key;
+        $url = $this->base . $path . '?' . http_build_query($params);
+
+        $cacheKey = md5($url);
+        $cacheFile = "{$this->cacheDir}/owm_{$cacheKey}.json";
+
+        if(is_file($cacheFile) && (time() - filemtime($cacheFile) < $this->ttl)) {
+            $json = file_get_contents($cacheFile);
+            $data = json_decode((string)$json, true);
+            if(is_array($data)) {
+                return $data;
+            }
+        }
+
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_TIMEOUT        => $this->timeout,
+            CURLOPT_CONNECTTIMEOUT => $this->timeout,
+            CURLOPT_HTTPHEADER     => ['Accept: application/json'] 
+        ]);
+
+        $body = curl_exec($ch);
+        $code = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error = curl_error($ch);
+        curl_close($ch);
+
+        if($body === false) {
+            throw new \RuntimeException("Upstream request failed: {$error}");
+        }
+
+        $data = json_decode((string)$body, true);
+        if(!is_array($data)) {
+            throw new \RuntimeException("Invalid JSON from upstream (HTTP {$code})");
+        }
+
+        if($code >= 400) {
+            $message = $data['message'] ?? 'Upstream error';
+            throw new \RuntimeException($message, $code);
+        }
+
+        @file_put_contents($cacheFile, $body);
+        return $data;
+    }
 }
