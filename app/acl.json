@@ -4,7 +4,7 @@
         "Home" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
-        "API": ["weather"]
+        "Api": ["weather"]
     },
     "LoggedIn" : {
         "denied" : {
