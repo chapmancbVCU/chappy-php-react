@@ -25,7 +25,7 @@ package-lock.json
 
 # Caches / logs / runtime
 /cache/
-/storage/cache
+/storage/cache/
 
 # Public uploads
 /public/images/uploads/profile_images/
