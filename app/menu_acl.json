@@ -1,5 +1,6 @@
 {
     "Home" : "home",
     "Admin" : "admindashboard/index",
-    "Test" : "home/test"
+    "Test" : "home/test",
+    "Weather": "api/weather"
 }
