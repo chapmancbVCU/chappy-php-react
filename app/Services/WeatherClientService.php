@@ -5,9 +5,6 @@ namespace App\Services;
 
 use Core\Lib\Utilities\Env;
 
-/**
- * Service that supports the WeatherClient model.
- */
 class WeatherClientService {
     private string $base;
     private string $key;
@@ -30,13 +27,11 @@ class WeatherClientService {
     }
 
     public function currentByCoords(float $lat, float $lon, string $units = 'imperial'): array {
-        return $this->get(
-            '/weather',
-            ['lat' => $lat, 'lon' => 'lon', 'units' => $units]
-        );
+        return $this->get('/weather', ['lat' => $lat, 'lon' => $lon, 'units' => $units]);
     }
 
-    private function get(string $path, array $params): array {
+    private function get(string $path, array $params): array
+    {
         $params['appid'] = $this->key;
         $url = $this->base . $path . '?' . http_build_query($params);
 
@@ -47,8 +42,8 @@ class WeatherClientService {
             $json = file_get_contents($cacheFile);
             $data = json_decode((string)$json, true);
             if(is_array($data)) {
-                return $data;
-            }
+                return $data;  
+            } 
         }
 
         $ch = curl_init($url);
@@ -57,26 +52,25 @@ class WeatherClientService {
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_TIMEOUT        => $this->timeout,
             CURLOPT_CONNECTTIMEOUT => $this->timeout,
-            CURLOPT_HTTPHEADER     => ['Accept: application/json'] 
+            CURLOPT_HTTPHEADER     => ['Accept: application/json'],
         ]);
-
         $body = curl_exec($ch);
         $code = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $error = curl_error($ch);
+        $err = curl_error($ch);
         curl_close($ch);
 
         if($body === false) {
-            throw new \RuntimeException("Upstream request failed: {$error}");
+            throw new \RuntimeException("Upstream request failed: {$err}");
         }
 
         $data = json_decode((string)$body, true);
         if(!is_array($data)) {
-            throw new \RuntimeException("Invalid JSON from upstream (HTTP {$code})");
+            throw new \RuntimeException("Invalid JSON from upstream (HTTP {$code}).");
         }
 
         if($code >= 400) {
-            $message = $data['message'] ?? 'Upstream error';
-            throw new \RuntimeException($message, $code);
+            $msg = $data['message'] ?? 'Upstream error';
+            throw new \RuntimeException($msg, $code);
         }
 
         @file_put_contents($cacheFile, $body);
