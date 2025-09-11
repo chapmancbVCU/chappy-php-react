@@ -1,13 +1,14 @@
 import React from "react";
 import Forms from "@chappy/components/Forms";
 import WeatherCard from "@/components/WeatherCard";
+import documentTitle from "@chappy/utils/documentTitle"
 export default function Test({vars, test1Var, test2Var, cellNumber, options, selectedVal}) {
     console.log("**********************************");
     console.log("Vars");
     console.log(vars);
     console.log("Options in Test");
     console.log(options)
-
+    documentTitle('Test title')
     return (
         <>
             <h1>Test</h1>
