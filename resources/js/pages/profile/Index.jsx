@@ -2,14 +2,16 @@ import React from "react";
 import SafeHtml from '@chappy/components/SafeHtml.jsx';
 import asset from '@chappy/utils/asset'
 import route from "@chappy/utils/route";
+import documentTitle from "@chappy/utils/documentTitle";
 
 /**
  * Renders index view for profile controller.
  * @param {string} param0 Props for user and current profile image URL.
- * @returns 
+ * @returns {JSX.Element} The component for the profile index view.
  */
 function Index({ user, profileImage }) {
-    
+    documentTitle(`Profile Details for ${user.username}`);
+
     return (
         <>
             <h1 className="text-center">Profile Details for {user.username}</h1>

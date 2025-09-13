@@ -62,7 +62,7 @@ class ProfileController extends Controller {
         $user = AuthService::currentUser();
         UserService::ensureAuthenticatedUser($user);
         $profileImages = ProfileImages::findByUserId($user->id);
-        $this->view->setSiteTitle("Profile Details for {$user->username}");
+
         $this->view->props = [
             'user' => $user, 
             'profileImage' => $profileImages[0]
