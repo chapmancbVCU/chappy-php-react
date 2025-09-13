@@ -4,7 +4,7 @@ import asset from '@chappy/utils/asset'
  * The home page.
  * @property {object} user The currently logged in user.
  * @param {InputProps} param0 
- * @returns {HTMLDivElement} The contents of Index view.
+ * @returns {JSX.Element} The contents of Index view.
  */
 export default function Index({ user }) {
   const username = user.fname ?? 'Guest';
