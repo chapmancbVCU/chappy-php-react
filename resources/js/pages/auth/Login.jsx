@@ -6,10 +6,9 @@ import Forms, { CheckBoxLeftLabel } from "@chappy/components/Forms";
  * @property {object} errors The errors object.
  * @property {object} login The login model object
  * @param {InputProps} param0 
- * @returns 
+ * @returns {JSX.Element} The contents 
  */
-function Auth({errors, login, rememberMeChecked}) {
-    console.log
+function Login({errors, login, rememberMeChecked}) {
     return(
         <div className="row align-items-center justify-content-center">
             <div className="col-md-6 bg-light p-3">
@@ -53,4 +52,4 @@ function Auth({errors, login, rememberMeChecked}) {
     )
 }
 
-export default Auth;
+export default Login;
