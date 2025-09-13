@@ -49,7 +49,6 @@ class ProfileController extends Controller {
             'errors' => $user->getErrorMessages(),
             'profileImages' => $profileImages,
         ];
-        $this->view->setSiteTitle("Edit Details for {$user->username}");
         $this->view->renderJsx('profile.Edit', $props);
     }
 

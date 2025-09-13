@@ -1,8 +1,8 @@
 import React from "react";
-
 import Forms from "@chappy/components/Forms";
 import route from "@chappy/utils/route";
 import ProfileImageSorter from '@/components/ProfileImageSorter';
+import documentTitle from '@chappy/utils/documentTitle';
 
 /**
  * Generates the edit profile component
@@ -11,9 +11,11 @@ import ProfileImageSorter from '@/components/ProfileImageSorter';
  * @property {array} profileImage Array that contains object for currently 
  * selected profile image.
  * @param {InputProps} param0 
- * @returns {HTMLDivElement} The edit profile view component.
+ * @returns {JSX.Element} The edit profile view component.
  */
 function Edit({user, errors, profileImages}) {
+    documentTitle(`Edit Details for ${user.username}`);
+
     return (
         <div className="row align-items-center justify-content-center mb-5">
             <div className="col-md-6 bg-light p-3">
