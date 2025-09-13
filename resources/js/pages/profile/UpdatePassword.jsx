@@ -2,6 +2,8 @@ import React from "react";
 import Forms from "@chappy/components/Forms";
 import {PasswordComplexityRequirements} from '@chappy/components/PasswordComplexityRequirements';
 import route from "@chappy/utils/route";
+import documentTitle from "@chappy/utils/documentTitle";
+
 /**
  * Render component for password reset view.
  * 
@@ -11,7 +13,8 @@ import route from "@chappy/utils/route";
  * @returns {HTMLDivElement} Component for password reset view.
  */
 function UpdatePassword({user, errors}) {
-
+    documentTitle(`Change Password for ${user.username}`);
+    
     return (
         <div className="row align-items-center justify-content-center">
             <div className="col-md-6 bg-light p-3">
