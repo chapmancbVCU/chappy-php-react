@@ -4,7 +4,8 @@
         "Home" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
-        "Api": ["weather"]
+        "Api": ["weather"],
+        "Products": ["index", "show", "preflight"]
     },
     "LoggedIn" : {
         "denied" : {
@@ -12,7 +13,8 @@
         },
         "Auth" : ["logout"],
         "Contacts" : ["*"],
-        "Profile" : ["*"]
+        "Profile" : ["*"],
+        "Products": ["index", "show", "store", "update", "destroy", "preflight"]
     },
     "Admin" : {
         "denied" : {},
