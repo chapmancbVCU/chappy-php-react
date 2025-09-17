@@ -1,5 +1,8 @@
 {
     "Home" : "home",
     "Admin" : "admindashboard/index",
-    "Test" : "home/test"
+    "Test" : "home/test",
+    "Products" : {
+        "List" : "products/index"
+    }
 }
