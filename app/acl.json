@@ -5,7 +5,7 @@
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
         "Api": ["weather"],
-        "Products": ["index", "show", "preflight"]
+        "Products": ["index", "list", "show", "preflight"]
     },
     "LoggedIn" : {
         "denied" : {
@@ -14,7 +14,7 @@
         "Auth" : ["logout"],
         "Contacts" : ["*"],
         "Profile" : ["*"],
-        "Products": ["index", "show", "store", "update", "destroy", "preflight"]
+        "Products": ["index", "list", "show", "store", "update", "destroy", "preflight"]
     },
     "Admin" : {
         "denied" : {},
