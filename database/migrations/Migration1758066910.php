@@ -21,6 +21,7 @@ class Migration1758066910 extends Migration {
             $table->decimal('price', 10, 2);
             $table->decimal('shipping', 10, 2);
             $table->text('description');
+            $table->integer('inventory');
             $table->softDeletes();
         });
     }
