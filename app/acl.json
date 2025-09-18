@@ -4,7 +4,7 @@
         "Home" : ["*"],
         "Auth" : ["login", "register", "resetPassword"],
         "Restricted" : ["*"],
-        "Api": ["weather"],
+        "Weather": ["show", "preflight"],
         "Products": ["index", "list", "show", "preflight"]
     },
     "LoggedIn" : {
