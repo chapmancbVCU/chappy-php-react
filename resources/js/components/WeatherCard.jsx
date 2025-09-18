@@ -1,4 +1,3 @@
-// Example component
 import React from 'react';
 import { apiGet, useAsync } from '@chappy/utils/api';
 

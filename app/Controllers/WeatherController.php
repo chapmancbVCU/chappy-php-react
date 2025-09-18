@@ -2,7 +2,6 @@
 namespace App\Controllers;
 use Throwable;
 use Core\Controller;
-use Core\Lib\Utilities\Env;
 use App\Services\WeatherService;
 
 class WeatherController extends Controller
